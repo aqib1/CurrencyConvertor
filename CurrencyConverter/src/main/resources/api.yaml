@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  description: API for currency conversion
+  version: 1.0.0
+  title: Currency converter application
+tags:
+- name: Currency Converter Api
+  description: Simulator application for a toy robot
+paths:
+  /api/currency/convert:
+    post:
+      tags:
+      - Currency Converter
+      summary: get ammount (in source-currency), source-currency, target-currency and convert in to amount in target currency.
+      operationId: currencyConvert
+      requestBody:
+        description: request body required for convert currency to given currency
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CCRequestDto"
+      responses:
+       200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CCResponseDto"
+components:
+  schemas:
+    CCRequestDto:
+      properties:
+        amount:
+          type: integer
+        sourceCurrency:
+          type: string
+        targetCurrency:
+          type: string
+    CCResponseDto:
+      properties:
+        success:
+          type: boolean
+        terms:
+          type: string
+        privacy: 
+          type: string
+        timestamp:
+          type: number
+        source:
+          type: string
+        qoutes: 
+          type: array
+          items:
+            type: string
+          
+          
