@@ -46,16 +46,44 @@ components:
         privacy: 
           type: string
         timestamp:
-          type: number
+          type: integer
+          format: int64
         source:
           type: string
         qoutes: 
           type: array
           items:
             type: string
+    ResponseConvertDto:
+      properties:
+        success:
+          type: boolean
+        terms:
+          type: string
+        privacy: 
+          type: string
+        query:
+          type: object
+          $ref: "#/components/schemas/QueryDto"
+        info:
+          type: object
+          $ref: "#/components/schemas/ConvertTimeStampInfoDto"
+        result:       
+          type: number  
+    ConvertTimeStampInfoDto:
+      properties:
+        timestamp: 
+          type : integer
+          format: int64     
+    QueryDto:
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        amount:
+          type: integer
     URLTypes:
       type: string
       enum:
-        - CONVERT       
-          
-          
+        - CONVERT
