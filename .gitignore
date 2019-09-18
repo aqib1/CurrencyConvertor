@@ -1,0 +1,9 @@
+/.metadata/
+CurrencyConverter/target/
+CurrencyConverter/.classpath
+CurrencyConverter/.project
+CurrencyConverter/.settings/
+EurekaServer/.classpath
+EurekaServer/.project
+EurekaServer/.settings/
+EurekaServer/target/

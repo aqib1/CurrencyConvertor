@@ -53,5 +53,9 @@ components:
           type: array
           items:
             type: string
+    URLTypes:
+      type: string
+      enum:
+        - CONVERT       
           
           
