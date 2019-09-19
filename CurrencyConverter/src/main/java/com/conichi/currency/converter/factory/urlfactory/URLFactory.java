@@ -6,10 +6,10 @@ import com.example.model.URLTypes;
 public class URLFactory {
 
 	public String getURL(URLTypes urlType) {
-		String url = URLS.CURRENCYLAYER_API;
+		String url = URLS.CURRENCYCONV_API;
 		switch (urlType) {
 		case CONVERT:
-			url += URLS.CURRENCYLAYER_API_CONVERT;
+			url += URLS.CURRENCYCONV_API_CONVERT;
 			break;
 
 		default:
