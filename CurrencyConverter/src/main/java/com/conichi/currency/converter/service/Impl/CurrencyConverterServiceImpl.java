@@ -8,7 +8,6 @@ import com.conichi.currency.converter.feignclient.CurrencyLayerAPI;
 import com.conichi.currency.converter.service.CurrencyConverterService;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
-import com.google.gson.JsonObject;
 
 import feign.Feign;
 import feign.Logger;
@@ -26,8 +25,8 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 				.decoder(new GsonDecoder()).logger(new Slf4jLogger(CurrencyLayerAPI.class)).logLevel(Logger.Level.FULL)
 				.target(CurrencyLayerAPI.class, CURRENCYCONV_API);
 		
-		JsonObject jsonObject= client.currencyConverter(request.getSourceCurrency(), request.getTargetCurrency());
-		System.out.println(jsonObject);
+		ResponseConvertDto jsonObject= client.currencyConverter(request.getSourceCurrency(), request.getTargetCurrency());
+		
 		return null;
 	}
 

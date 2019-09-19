@@ -55,27 +55,36 @@ components:
             type: string
     ResponseConvertDto:
       properties:
-        success:
-          type: boolean
         query:
           type: object
           $ref: "#/components/schemas/QueryDto"
-        info:
+        results:
           type: object
-          $ref: "#/components/schemas/ConvertTimeStampInfoDto"
+          $ref: "#/components/schemas/ResultsDto"
         result:       
           type: number  
-    ConvertTimeStampInfoDto:
+    ResultsDto:
+      type: object
       properties:
-        timestamp: 
-          type : string    
-    QueryDto:
+        default:
+         type: string
+      additionalProperties:
+        type: object   
+        $ref: "#/components/schemas/ResultValueDto"
+    ResultValueDto:
+      type: object
       properties:
-        from:
+        id:
           type: string
+        val:
+          type: number
         to:
           type: string
-        amount:
+        fr:
+          type: string
+    QueryDto:
+      properties:
+        count:
           type: integer
     URLTypes:
       type: string
