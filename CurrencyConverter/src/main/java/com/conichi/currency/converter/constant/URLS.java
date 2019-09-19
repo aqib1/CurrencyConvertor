@@ -10,9 +10,11 @@ public final class URLS {
 
 	public static final String CURRENCYCONV_API = "https://free.currconv.com/api/v7";
 
-	public static final String CURRENCYCONV_API_CONVERT = "/convert" + "?" + ACCESS_KEY + "=" + ACCESS_KEY_VALUE;
+	public static final String CURRENCYCONV_API_CONVERT = "/convert" + "?";
 	
-	public static final String ULTRA_COMPACT = "compact=ultra";
+	public static final String ULTRA_COMPACT = "compact=ultra  HTTP/1.1";
+	
+	public static final String QUERY_KEY = "q";
 	private URLS() {
 	}
 }

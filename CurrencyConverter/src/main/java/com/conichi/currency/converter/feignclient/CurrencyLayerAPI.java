@@ -1,8 +1,13 @@
 package com.conichi.currency.converter.feignclient;
 
+import static com.conichi.currency.converter.constant.URLS.ACCESS_KEY;
+import static com.conichi.currency.converter.constant.URLS.ACCESS_KEY_VALUE;
 import static com.conichi.currency.converter.constant.URLS.CURRENCYCONV_API_CONVERT;
+import static com.conichi.currency.converter.constant.URLS.QUERY_KEY;
 import static com.conichi.currency.converter.constant.URLS.ULTRA_COMPACT;
-import java.util.HashMap;
+
+import com.google.gson.JsonObject;
+
 import feign.Param;
 import feign.RequestLine;
 
@@ -13,7 +18,8 @@ import feign.RequestLine;
  */
 public interface CurrencyLayerAPI {
 
-	@RequestLine("GET " + CURRENCYCONV_API_CONVERT + "&q={from}_{to}" + ULTRA_COMPACT)
-	HashMap<String,Double> currencyConverter(@Param("from") String from, @Param("to") String to);
+	@RequestLine("GET " + CURRENCYCONV_API_CONVERT + QUERY_KEY + "={from}_{to}"+ "&" + ACCESS_KEY + "="
+			+ ACCESS_KEY_VALUE + "&" + ULTRA_COMPACT)
+	JsonObject currencyConverter(@Param("from") String from, @Param("to") String to);
 
 }
