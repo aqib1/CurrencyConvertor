@@ -1,6 +1,6 @@
 package com.conichi.currency.converter;
 
-import static com.conichi.currency.converter.constant.Consts.COMPONENT_SCAN_PATH;
+import static com.conichi.currency.converter.constant.HelperConst.COMPONENT_SCAN_PATH;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

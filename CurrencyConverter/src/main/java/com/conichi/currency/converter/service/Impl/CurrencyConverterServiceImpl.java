@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
+import com.conichi.currency.converter.constant.HelperConst;
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.conichi.currency.converter.factory.FeignBuilderFactory;
@@ -30,10 +31,17 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 			response = client.currencyConverter(request.getSourceCurrency(), request.getTargetCurrency());
 			validateResponse(response);
 			response.setResult(getResultValue(response, request));
+			checkResultValidation(response);
 		} catch (Exception e) {
 			throw new BadInternalServerException("BadInternalServerException => " + e.toString(), e);
 		}
 		return response;
+	}
+
+	private void checkResultValidation(ResponseConvertDto response) {
+		if (Objects.isNull(response.getResult())) {
+			throw new InvalidResponseException("Conversion result not created, against API => " + CURRENCYCONV_API);
+		}
 	}
 
 	private void validateResponse(ResponseConvertDto response) {
@@ -44,13 +52,13 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 			throw new InvalidResponseException(
 					"Results are empty, in response recieved against API => " + CURRENCYCONV_API);
 		}
-		if (Objects.isNull(response.getResult())) {
-			throw new InvalidResponseException("Conversion result not created, against API => " + CURRENCYCONV_API);
-		}
 	}
 
 	private BigDecimal getResultValue(ResponseConvertDto response, CCRequestDto request) {
 		String key = response.getResults().entrySet().iterator().next().getKey();
+		if (HelperConst.isNullOrEmptyString(key)) {
+			throw new InvalidResponseException("Key in response not found!!");
+		}
 		long value = response.getResults().get(key).getVal().longValueExact() * request.getAmount();
 		return new BigDecimal(value);
 	}

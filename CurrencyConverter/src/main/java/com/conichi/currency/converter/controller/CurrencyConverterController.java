@@ -30,7 +30,6 @@ public class CurrencyConverterController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<ResponseConvertDto> currencyConvert(@RequestBody CCRequestDto requestDto) {
-		
 		ResponseConvertDto response = currencyConverterBusiness.currencyConvert(requestDto);
 		return ResponseEntity.ok().body(response);
 	}
