@@ -1,25 +1,58 @@
 openapi: 3.0.0
 info:
   description: API for currency conversion
-  version: 1.0.0
+  version: "3.0.0-oas3"
   title: Currency converter application
 tags:
 - name: Currency Converter Api
   description: Simulator application for a toy robot
 paths:
   /api/currency/convert:
-    post:
+    get:
       tags:
       - Currency Converter
       summary: get ammount (in source-currency), source-currency, target-currency and convert in to amount in target currency.
       operationId: currencyConvert
-      requestBody:
-        description: request body required for convert currency to given currency
-        required: true
-        content: 
+      parameters:
+        - in: query
+          name: source
+          schema:
+            type: string
+        - in: query
+          name: target
+          schema:
+            type: string
+        - in: query
+          name: amount
+          schema:
+            type: integer
+      responses:
+       200:
+        description: Success
+        content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CCRequestDto"
+              $ref: "#/components/schemas/ResponseShortConvertDto"
+
+  /api/currency/convert/details:
+    get:
+      tags:
+      - Currency Converter
+      summary: get ammount (in source-currency), source-currency, target-currency and convert in to amount in target currency.
+      operationId: currencyConvertDetails
+      parameters:
+        - in: query
+          name: source
+          schema:
+            type: string
+        - in: query
+          name: target
+          schema:
+            type: string
+        - in: query
+          name: amount
+          schema:
+            type: integer
       responses:
        200:
         description: Success
@@ -62,7 +95,8 @@ components:
           type: object
           $ref: "#/components/schemas/ResultsDto"
         result:       
-          type: number  
+          type: number
+          format: double
     ResultsDto:
       type: object
       properties:
@@ -78,6 +112,7 @@ components:
           type: string
         val:
           type: number
+          format: double
         to:
           type: string
         fr:
@@ -86,7 +121,8 @@ components:
       properties:
         count:
           type: integer
-    URLTypes:
-      type: string
-      enum:
-        - CONVERT
+    ResponseShortConvertDto:
+      properties:
+        result:       
+          type: number
+          format: double

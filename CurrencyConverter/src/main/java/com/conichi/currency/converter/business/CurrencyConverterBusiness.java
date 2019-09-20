@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
+import com.conichi.currency.converter.mapper.ResponseShortConvertMapper;
 import com.conichi.currency.converter.service.CurrencyConverterService;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
+import com.example.model.ResponseShortConvertDto;
 
 /**
  * @author Aqib_Javed
@@ -19,11 +21,20 @@ import com.example.model.ResponseConvertDto;
 @Component
 public class CurrencyConverterBusiness {
 	private static final Logger logger = LoggerFactory.getLogger(CurrencyConverterBusiness.class);
-	
+
 	@Autowired
 	private CurrencyConverterService currencyConverterService;
-	
-	public ResponseConvertDto currencyConvert(CCRequestDto requestDto) {
+
+	@Autowired
+	private ResponseShortConvertMapper responseShortConvertMapper;
+
+	public ResponseShortConvertDto currencyConvert(CCRequestDto requestDto) {
+		checkCoreRequirements(requestDto);
+		return responseShortConvertMapper
+				.responseConvertDtoToResponseShortConvertDto(currencyConverterService.currencyConvert(requestDto));
+	}
+
+	public ResponseConvertDto currencyConvertDetailed(CCRequestDto requestDto) {
 		checkCoreRequirements(requestDto);
 		return currencyConverterService.currencyConvert(requestDto);
 	}
@@ -39,6 +50,5 @@ public class CurrencyConverterBusiness {
 		if (Objects.isNull(requestDto.getTargetCurrency()) || requestDto.getTargetCurrency().isEmpty()) {
 			throw new InvalidRequestException("target-currency cannot be null or empty");
 		}
-
 	}
 }

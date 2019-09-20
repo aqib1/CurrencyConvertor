@@ -10,6 +10,10 @@ public final class HelperConst {
 		return Objects.isNull(string) || string.isEmpty();
 	}
 
+	public static boolean isNull(Object object) {
+		return Objects.isNull(object);
+	}
+
 	private HelperConst() {
 
 	}

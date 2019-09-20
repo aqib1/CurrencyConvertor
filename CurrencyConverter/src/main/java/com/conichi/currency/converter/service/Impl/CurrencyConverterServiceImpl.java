@@ -1,12 +1,8 @@
 package com.conichi.currency.converter.service.Impl;
 
 import static com.conichi.currency.converter.constant.URLS.CURRENCYCONV_API;
-
-import java.math.BigDecimal;
 import java.util.Objects;
-
 import org.springframework.stereotype.Service;
-
 import com.conichi.currency.converter.constant.HelperConst;
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
@@ -15,6 +11,7 @@ import com.conichi.currency.converter.feignclient.CurrencyLayerAPI;
 import com.conichi.currency.converter.service.CurrencyConverterService;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
+
 import feign.Logger;
 import feign.slf4j.Slf4jLogger;
 
@@ -54,13 +51,12 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 		}
 	}
 
-	private BigDecimal getResultValue(ResponseConvertDto response, CCRequestDto request) {
+	private double getResultValue(ResponseConvertDto response, CCRequestDto request) {
 		String key = response.getResults().entrySet().iterator().next().getKey();
 		if (HelperConst.isNullOrEmptyString(key)) {
 			throw new InvalidResponseException("Key in response not found!!");
 		}
-		long value = response.getResults().get(key).getVal().longValueExact() * request.getAmount();
-		return new BigDecimal(value);
+		return response.getResults().get(key).getVal() * request.getAmount();
 	}
 
 }
