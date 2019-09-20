@@ -2,7 +2,8 @@ package com.conichi.currency.converter.exceptions;
 
 /**
  * @author Aqib_Javed
- *
+ * @version 1.0
+ * @since 9/20/2019
  */
 public class InvalidParamException extends RuntimeException {
 	/**
