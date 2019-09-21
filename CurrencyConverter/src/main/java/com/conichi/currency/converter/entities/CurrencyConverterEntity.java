@@ -23,8 +23,8 @@ public class CurrencyConverterEntity {
 	@GeneratedValue
 	private Long id;
 
-	@Column(name = "query")
-	private String query_Conversion;
+	@Column(name = "query", unique = true)
+	private String query;
 
 	@Column(name = "convert")
 	private double convertionValue;
