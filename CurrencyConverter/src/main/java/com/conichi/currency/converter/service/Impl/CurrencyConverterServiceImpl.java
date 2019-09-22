@@ -3,7 +3,7 @@ package com.conichi.currency.converter.service.Impl;
 import static com.conichi.currency.converter.constant.URLS.CURRENCYCONV_API;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
-import com.conichi.currency.converter.constant.HelperConst;
+import com.conichi.currency.converter.constant.CCHelper;
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.conichi.currency.converter.factory.FeignBuilderFactory;
@@ -53,7 +53,7 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 
 	private double getResultValue(ResponseConvertDto response, CCRequestDto request) {
 		String key = response.getResults().entrySet().iterator().next().getKey();
-		if (HelperConst.isNullOrEmptyString(key)) {
+		if (CCHelper.isNullOrEmptyString(key)) {
 			throw new InvalidResponseException("Key in response not found!!");
 		}
 		return response.getResults().get(key).getVal() * request.getAmount();

@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conichi.currency.converter.exceptions.InvalidRequestException;
+import com.conichi.currency.converter.constant.CCHelper;
 import com.conichi.currency.converter.mapper.ResponseShortConvertMapper;
 import com.conichi.currency.converter.service.CurrencyConverterService;
 import com.example.model.CCRequestDto;
@@ -26,29 +26,38 @@ public class CurrencyConverterBusiness {
 	private CurrencyConverterService currencyConverterService;
 
 	@Autowired
+	private CCCacheBusiness cCCacheBusiness;
+
+	@Autowired
 	private ResponseShortConvertMapper responseShortConvertMapper;
 
 	public ResponseShortConvertDto currencyConvert(CCRequestDto requestDto) {
-		checkCoreRequirements(requestDto);
-		return responseShortConvertMapper
-				.responseConvertDtoToResponseShortConvertDto(currencyConverterService.currencyConvert(requestDto));
+		logger.info("checking core requirements for requestDto => " + requestDto);
+		CCHelper.checkCoreRequirements(requestDto);
+		logger.info("checking cache if contains details for => " + requestDto);
+		ResponseShortConvertDto response = cCCacheBusiness.convertCurrency(requestDto);
+		if (!Objects.isNull(response))
+			return response;
+		logger.info("requestDto is not exits in cache, sending request to service");
+		ResponseConvertDto responseConvertDto = currencyConverterService.currencyConvert(requestDto);
+		logger.info("presisting resposne to cache => " + responseConvertDto);
+		cCCacheBusiness.presist(requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency(),
+				responseConvertDto);
+		return responseShortConvertMapper.responseConvertDtoToResponseShortConvertDto(responseConvertDto);
 	}
 
 	public ResponseConvertDto currencyConvertDetailed(CCRequestDto requestDto) {
-		checkCoreRequirements(requestDto);
-		return currencyConverterService.currencyConvert(requestDto);
+		logger.info("checking core requirements for requestDto " + requestDto);
+		CCHelper.checkCoreRequirements(requestDto);
+		logger.info("checking cache if contains details for => " + requestDto);
+		ResponseConvertDto responseConvertDto = cCCacheBusiness.convertCurrencyDetailed(requestDto);
+		if (!Objects.isNull(responseConvertDto))
+			return responseConvertDto;
+		logger.info("requestDto is not exits in cache, sending request to service");
+		ResponseConvertDto response = currencyConverterService.currencyConvert(requestDto);
+		logger.info("presisting resposne to cache => " + responseConvertDto);
+		cCCacheBusiness.presist(requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency(), response);
+		return response;
 	}
 
-	private void checkCoreRequirements(CCRequestDto requestDto) {
-		logger.info("Checking core requirements of request[" + requestDto + "]");
-		if (Objects.isNull(requestDto)) {
-			throw new InvalidRequestException("Request is empty or null");
-		}
-		if (Objects.isNull(requestDto.getSourceCurrency()) || requestDto.getSourceCurrency().isEmpty()) {
-			throw new InvalidRequestException("source-currency cannot be null or empty");
-		}
-		if (Objects.isNull(requestDto.getTargetCurrency()) || requestDto.getTargetCurrency().isEmpty()) {
-			throw new InvalidRequestException("target-currency cannot be null or empty");
-		}
-	}
 }

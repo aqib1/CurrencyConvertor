@@ -1,6 +1,6 @@
 package com.conichi.currency.converter.aop;
 
-import static com.conichi.currency.converter.constant.HelperConst.COMPONENT_SCAN_PATH;
+import static com.conichi.currency.converter.constant.CCHelper.COMPONENT_SCAN_PATH;
 
 import java.time.LocalDateTime;
 
