@@ -97,6 +97,8 @@ components:
         result:       
           type: number
           format: double
+        createdAt:
+          type: string
     ResultsDto:
       type: object
       properties:
@@ -123,6 +125,8 @@ components:
           type: integer
     ResponseShortConvertDto:
       properties:
+        createdAt:
+          type: string
         result:       
           type: number
           format: double

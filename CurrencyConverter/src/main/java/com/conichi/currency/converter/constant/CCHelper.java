@@ -12,7 +12,7 @@ public final class CCHelper {
 	private static final Logger logger = LoggerFactory.getLogger(CCHelper.class);
 	public static final String COMPONENT_SCAN_PATH = "com.conichi.currency.converter";
 	public static final String COMPONENT_SCAN_PATH_REPOSITORY = "com.conichi.currency.converter.repository";
-
+	public static final String UNDER_SCORE = "_";
 	public static boolean isNullOrEmptyString(String string) {
 		return Objects.isNull(string) || string.isEmpty();
 	}

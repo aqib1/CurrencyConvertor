@@ -41,7 +41,7 @@ public class CurrencyConverterBusiness {
 		logger.info("requestDto is not exits in cache, sending request to service");
 		ResponseConvertDto responseConvertDto = currencyConverterService.currencyConvert(requestDto);
 		logger.info("presisting resposne to cache => " + responseConvertDto);
-		cCCacheBusiness.presist(requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency(),
+		cCCacheBusiness.presist(requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency(),
 				responseConvertDto);
 		return responseShortConvertMapper.responseConvertDtoToResponseShortConvertDto(responseConvertDto);
 	}
@@ -56,7 +56,8 @@ public class CurrencyConverterBusiness {
 		logger.info("requestDto is not exits in cache, sending request to service");
 		ResponseConvertDto response = currencyConverterService.currencyConvert(requestDto);
 		logger.info("presisting resposne to cache => " + responseConvertDto);
-		cCCacheBusiness.presist(requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency(), response);
+		cCCacheBusiness.presist(requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency(),
+				response);
 		return response;
 	}
 

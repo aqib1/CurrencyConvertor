@@ -1,7 +1,5 @@
 package com.conichi.currency.converter.business;
 
-import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +33,14 @@ public class CCCacheBusiness {
 
 	public ResponseShortConvertDto convertCurrency(CCRequestDto requestDto) {
 		CCHelper.checkCoreRequirements(requestDto);
-		String query = requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency();
+		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseShortMapper.currencyConverterEntityToResponseShortDto(cacheService.read(query));
 	}
 
 	public ResponseConvertDto convertCurrencyDetailed(CCRequestDto requestDto) {
 		CCHelper.checkCoreRequirements(requestDto);
-		String query = requestDto.getSourceCurrency() + "_" + requestDto.getTargetCurrency();
+		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseConvertDtoMapper.responseConvertDtoFromCurrencyConverterEntity(cacheService.read(query));
 	}
@@ -51,7 +49,7 @@ public class CCCacheBusiness {
 		logger.info("convert reposne to entity object");
 		CurrencyConverterEntity entity = responseConverDtoMapper.currencyConverterEntityFromResponseConvertDto(response,
 				query);
-		entity.setInsertedDate(LocalDateTime.now().toString());
+		entity.setInsertedDate(response.getCreatedAt());
 		logger.info("Writing curency entity to cache => " + entity);
 		cacheService.writeCache(entity);
 	}

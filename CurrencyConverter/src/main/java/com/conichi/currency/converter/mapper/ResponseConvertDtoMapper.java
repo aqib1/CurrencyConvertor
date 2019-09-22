@@ -19,6 +19,7 @@ public interface ResponseConvertDtoMapper {
 	@Mapping(source = "entity.result", target = "result")
 	@Mapping(source = "entity.countResult", target = "query.count")
 	@Mapping(target = "results", qualifiedByName = "getResults", source = "entity")
+	@Mapping(target = "createdAt", source = "insertedDate")
 	ResponseConvertDto responseConvertDtoFromCurrencyConverterEntity(CurrencyConverterEntity entity);
 
 	@Named("getResults")

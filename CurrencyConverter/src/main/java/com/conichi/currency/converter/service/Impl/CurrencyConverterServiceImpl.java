@@ -1,8 +1,12 @@
 package com.conichi.currency.converter.service.Impl;
 
 import static com.conichi.currency.converter.constant.URLS.CURRENCYCONV_API;
+
+import java.time.LocalDateTime;
 import java.util.Objects;
+
 import org.springframework.stereotype.Service;
+
 import com.conichi.currency.converter.constant.CCHelper;
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
@@ -49,6 +53,7 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 			throw new InvalidResponseException(
 					"Results are empty, in response recieved against API => " + CURRENCYCONV_API);
 		}
+		response.setCreatedAt(LocalDateTime.now().toString());
 	}
 
 	private double getResultValue(ResponseConvertDto response, CCRequestDto request) {
