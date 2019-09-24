@@ -21,7 +21,8 @@ import com.example.model.ResponseShortConvertDto;
 
 /**
  * @author Aqib_Javed
- *
+ * @version 1.0
+ * @since 09/15/2019
  */
 @RestController
 @RequestMapping(API_CURRENCY_CONVERT)
@@ -32,6 +33,12 @@ public class CurrencyConverterController {
 	@Autowired
 	private CurrencyConverterBusiness currencyConverterBusiness;
 
+	/**
+	 * @param sourceCurrency
+	 * @param targetCurrency
+	 * @param amount
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<ResponseShortConvertDto> currencyConvert(@RequestParam("source") String sourceCurrency,
 			@RequestParam("target") String targetCurrency, @RequestParam("amount") Integer amount) {
@@ -41,6 +48,12 @@ public class CurrencyConverterController {
 		return ResponseEntity.ok().body(response);
 	}
 
+	/**
+	 * @param sourceCurrency
+	 * @param targetCurrency
+	 * @param amount
+	 * @return
+	 */
 	@RequestMapping(value = API_CURRENCY_CONVERT_DETAILS, method = RequestMethod.GET)
 	public ResponseEntity<ResponseConvertDto> currencyConvertDetails(@RequestParam("source") String sourceCurrency,
 			@RequestParam("target") String targetCurrency, @RequestParam("amount") Integer amount) {
@@ -50,6 +63,12 @@ public class CurrencyConverterController {
 		return ResponseEntity.ok().body(response);
 	}
 
+	/**
+	 * @param sourceCurrency
+	 * @param targetCurrency
+	 * @param amount
+	 * @return
+	 */
 	private CCRequestDto getCCRequestDto(String sourceCurrency, String targetCurrency, Integer amount) {
 		if (CCHelper.isNullOrEmptyString(sourceCurrency) || CCHelper.isNullOrEmptyString(targetCurrency)
 				|| CCHelper.isNull(amount)) {

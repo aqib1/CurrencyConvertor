@@ -1,17 +1,19 @@
 openapi: 3.0.0
 info:
   description: API for currency conversion
-  version: "3.0.0-oas3"
+  version: "1.0.0-oas3"
   title: Currency converter application
 tags:
-- name: Currency Converter Api
-  description: Simulator application for a toy robot
+  - name: Currency Converter Api
+    description: Simulator application for a toy robot
 paths:
   /api/currency/convert:
     get:
       tags:
-      - Currency Converter
-      summary: get ammount (in source-currency), source-currency, target-currency and convert in to amount in target currency.
+        - Currency Converter
+      summary: >-
+        get ammount (in source-currency), source-currency, target-currency and
+        convert in to amount in target currency.
       operationId: currencyConvert
       parameters:
         - in: query
@@ -27,18 +29,19 @@ paths:
           schema:
             type: integer
       responses:
-       200:
-        description: Success
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ResponseShortConvertDto"
-
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseShortConvertDto'
   /api/currency/convert/details:
     get:
       tags:
-      - Currency Converter
-      summary: get ammount (in source-currency), source-currency, target-currency and convert in to amount in target currency.
+        - Currency Converter
+      summary: >-
+        get ammount (in source-currency), source-currency, target-currency and
+        convert in to amount in target currency.
       operationId: currencyConvertDetails
       parameters:
         - in: query
@@ -54,12 +57,12 @@ paths:
           schema:
             type: integer
       responses:
-       200:
-        description: Success
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CCResponseDto"
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CCResponseDto'
 components:
   schemas:
     CCRequestDto:
@@ -76,13 +79,13 @@ components:
           type: boolean
         terms:
           type: string
-        privacy: 
+        privacy:
           type: string
         timestamp:
           type: string
         source:
           type: string
-        qoutes: 
+        qoutes:
           type: array
           items:
             type: string
@@ -90,11 +93,11 @@ components:
       properties:
         query:
           type: object
-          $ref: "#/components/schemas/QueryDto"
+          $ref: '#/components/schemas/QueryDto'
         results:
           type: object
-          $ref: "#/components/schemas/ResultsDto"
-        result:       
+          $ref: '#/components/schemas/ResultsDto'
+        result:
           type: number
           format: double
         createdAt:
@@ -103,10 +106,10 @@ components:
       type: object
       properties:
         default:
-         type: string
+          type: string
       additionalProperties:
-        type: object   
-        $ref: "#/components/schemas/ResultValueDto"
+        type: object
+        $ref: '#/components/schemas/ResultValueDto'
     ResultValueDto:
       type: object
       properties:
@@ -127,6 +130,30 @@ components:
       properties:
         createdAt:
           type: string
-        result:       
+        result:
           type: number
           format: double
+    ResponseShortVatDetailDto:
+      properties:
+        countryCode:
+          type: string
+        validFormat:
+          type: boolean
+    ResponseVatDetailDto:
+      properties:
+        company_address:
+          type: string
+        company_name:
+          type: string
+        country_code:
+          type: string
+        query:
+          type: string
+        success:
+          type: boolean
+        valid:
+          type: boolean
+        valid_format:
+          type: boolean
+        vat_number:  
+          type: string
