@@ -24,6 +24,10 @@ public class VATController {
 	@Autowired
 	private VATBusiness VATBusiness;
 
+	/**
+	 * @param vatId
+	 * @return
+	 */
 	@GetMapping(API_VAT_VALIDATION_DETAILS)
 	public ResponseEntity<ResponseVatDetailDto> validateVatDetailed(@RequestParam("vat") String vatId) {
 		logger.info("Request recieved with parameter vatId [" + vatId + "]");
@@ -32,10 +36,16 @@ public class VATController {
 		return ResponseEntity.ok().body(responseVatDetailDto);
 	}
 
+	/**
+	 * @param vatId
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<ResponseShortVatDetailDto> validateVat(@RequestParam("vat") String vatId) {
-
-		return null;
+		logger.info("Request recieved with parameter vatId [" + vatId + "]");
+		ResponseShortVatDetailDto responseShortVatDetailDto = VATBusiness.validateVat(vatId);
+		logger.info("Response recieved responseShortVatDetailDto [" + responseShortVatDetailDto + "]");
+		return ResponseEntity.ok().body(responseShortVatDetailDto);
 	}
 
 }

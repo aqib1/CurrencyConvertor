@@ -1,18 +1,23 @@
 package com.conichi.currency.converter.constant;
 
+import static com.conichi.currency.converter.constant.URLS.VAT_API;
+
 import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
+import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.example.model.CCRequestDto;
+import com.example.model.ResponseVatDetailDto;
 
 public final class CCHelper {
 	private static final Logger logger = LoggerFactory.getLogger(CCHelper.class);
 	public static final String COMPONENT_SCAN_PATH = "com.conichi.currency.converter";
 	public static final String COMPONENT_SCAN_PATH_REPOSITORY = "com.conichi.currency.converter.repository";
 	public static final String UNDER_SCORE = "_";
+
 	public static boolean isNullOrEmptyString(String string) {
 		return Objects.isNull(string) || string.isEmpty();
 	}
@@ -32,6 +37,16 @@ public final class CCHelper {
 		if (Objects.isNull(requestDto.getTargetCurrency()) || requestDto.getTargetCurrency().isEmpty()) {
 			throw new InvalidRequestException("target-currency cannot be null or empty");
 		}
+	}
+
+	public static void validateVatResponse(ResponseVatDetailDto response) {
+		if (CCHelper.isNull(response) || CCHelper.isNullOrEmptyString(response.getCompanyAddress())
+				|| CCHelper.isNullOrEmptyString(response.getCompanyName())
+				|| CCHelper.isNullOrEmptyString(response.getCountryCode())
+				|| CCHelper.isNullOrEmptyString(response.getQuery()) || CCHelper.isNull(response.getValidFormat())
+				|| CCHelper.isNull(response.getVatNumber()) || CCHelper.isNull(response.getValid())
+				|| CCHelper.isNull(response.getSuccess()))
+			throw new InvalidResponseException("\nNull Response recieved, against API => " + VAT_API);
 	}
 
 	private CCHelper() {

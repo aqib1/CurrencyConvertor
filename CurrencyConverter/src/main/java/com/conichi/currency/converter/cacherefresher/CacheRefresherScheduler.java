@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.conichi.currency.converter.exceptions.CacheRefresherException;
 import com.conichi.currency.converter.service.CCCacheService;
+import com.conichi.currency.converter.service.VATCacheService;
 
 @Component
 public class CacheRefresherScheduler {
@@ -17,14 +18,26 @@ public class CacheRefresherScheduler {
 	@Autowired
 	private CCCacheService cacheService;
 
+	@Autowired
+	private VATCacheService vatCacheService;
+
 	@Scheduled(fixedDelay = 86400000)
-	public void cacheRefresher() {
+	public void ccCacheRefresher() {
 		logger.info("cache refresher invoked!!");
 		try {
 			cacheService.deleteAll();
 		} catch (Exception e) {
 			throw new CacheRefresherException("Cache refresher failed => " + e.getMessage(), e);
 		}
+	}
 
+	@Scheduled(fixedDelay = 129600000)
+	public void vvCacheRefresher() {
+		logger.info("cache refresher invoked!!");
+		try {
+			vatCacheService.deleteAll();
+		} catch (Exception e) {
+			throw new CacheRefresherException("Cache refresher failed => " + e.getMessage(), e);
+		}
 	}
 }
