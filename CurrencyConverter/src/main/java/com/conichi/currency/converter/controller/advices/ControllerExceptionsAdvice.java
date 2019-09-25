@@ -20,9 +20,9 @@ import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.example.model.ResponseError;
 
 @RestControllerAdvice
-public class CurrencyConverterAdvice {
+public class ControllerExceptionsAdvice {
 
-	private static final Logger logger = LoggerFactory.getLogger(CurrencyConverterAdvice.class);
+	private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionsAdvice.class);
 
 	@ExceptionHandler(value = { BadInternalServerException.class })
 	public ResponseEntity<ResponseError> handleBadInternalServerException(RuntimeException e, WebRequest wr) {
