@@ -1,4 +1,4 @@
-package com.conichi.currency.converter.business;
+package com.conichi.currency.converter.unit.business;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,8 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.conichi.currency.converter.business.VATBusiness;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
-import com.conichi.currency.converter.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.DataHelper;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 

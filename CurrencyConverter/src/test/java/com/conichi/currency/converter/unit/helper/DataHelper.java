@@ -1,4 +1,4 @@
-package com.conichi.currency.converter.helper;
+package com.conichi.currency.converter.unit.helper;
 
 import org.springframework.http.ResponseEntity;
 

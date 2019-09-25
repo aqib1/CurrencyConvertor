@@ -1,4 +1,4 @@
-package com.conichi.currency.converter;
+package com.conichi.currency.converter.unit;
 
 import java.lang.reflect.Method;
 
@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.conichi.currency.converter.CurrencyConverterApplication;
 
 /**
  * @author AQIB JAVED

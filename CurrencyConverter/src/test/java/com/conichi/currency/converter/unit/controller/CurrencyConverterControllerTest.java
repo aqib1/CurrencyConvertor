@@ -1,4 +1,4 @@
-package com.conichi.currency.converter.controller;
+package com.conichi.currency.converter.unit.controller;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,7 +10,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.conichi.currency.converter.helper.DataHelper;
+import com.conichi.currency.converter.controller.CurrencyConverterController;
+import com.conichi.currency.converter.unit.helper.DataHelper;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
 

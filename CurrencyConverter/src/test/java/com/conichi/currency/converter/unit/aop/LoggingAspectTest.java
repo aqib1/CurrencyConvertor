@@ -1,10 +1,12 @@
-package com.conichi.currency.converter.aop;
+package com.conichi.currency.converter.unit.aop;
 
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.JoinPoint;
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.conichi.currency.converter.aop.LoggingAspect;
 
 public class LoggingAspectTest {
 
@@ -15,7 +17,7 @@ public class LoggingAspectTest {
 		Method method = c.getDeclaredMethod(methodName);
 		Assert.assertNotNull(method);
 	}
-	
+
 	@Test
 	public void checkMethodsLogStartOfMethod() throws NoSuchMethodException, SecurityException {
 		String methodName = "logStartOfMethod";
@@ -23,7 +25,7 @@ public class LoggingAspectTest {
 		Method method = c.getDeclaredMethod(methodName, JoinPoint.class);
 		Assert.assertNotNull(method);
 	}
-	
+
 	@Test
 	public void checkMethodsLogEndOfMethod() throws NoSuchMethodException, SecurityException {
 		String methodName = "logEndOfMethod";

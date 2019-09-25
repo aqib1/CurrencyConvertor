@@ -1,4 +1,4 @@
-package com.conichi.currency.converter.controller;
+package com.conichi.currency.converter.unit.controller;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,7 +9,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.conichi.currency.converter.helper.DataHelper;
+
+import com.conichi.currency.converter.controller.VATController;
+import com.conichi.currency.converter.unit.helper.DataHelper;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
@@ -24,8 +26,10 @@ public class VATControllerTest {
 	}
 
 	private void mockVatController() {
-		Mockito.when(vatController.validateVat(Mockito.anyString())).thenReturn(DataHelper.getEntityResponseShortVatDto());
-		Mockito.when(vatController.validateVatDetailed(Mockito.anyString())).thenReturn(DataHelper.getEntityResponseVatDto());
+		Mockito.when(vatController.validateVat(Mockito.anyString()))
+				.thenReturn(DataHelper.getEntityResponseShortVatDto());
+		Mockito.when(vatController.validateVatDetailed(Mockito.anyString()))
+				.thenReturn(DataHelper.getEntityResponseVatDto());
 	}
 
 	@Test
