@@ -17,6 +17,7 @@ public final class CCHelper {
 	public static final String COMPONENT_SCAN_PATH = "com.conichi.currency.converter";
 	public static final String COMPONENT_SCAN_PATH_REPOSITORY = "com.conichi.currency.converter.repository";
 	public static final String UNDER_SCORE = "_";
+	public static final String CACHE_REFRESHER_VALUE = "cahce.refresher.scheduler";
 
 	public static boolean isNullOrEmptyString(String string) {
 		return Objects.isNull(string) || string.isEmpty();

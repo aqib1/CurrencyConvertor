@@ -10,6 +10,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * @author AQIB JAVED
+ * @version 1.0
+ * @since 9/16/2019
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @ComponentScan(COMPONENT_SCAN_PATH)
@@ -17,6 +22,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class CurrencyConverterApplication {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CurrencyConverterApplication.class, args);
 	}

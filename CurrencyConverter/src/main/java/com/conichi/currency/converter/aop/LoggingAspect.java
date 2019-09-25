@@ -24,11 +24,13 @@ public class LoggingAspect {
 
 	@Before("allMethod()")
 	public void logStartOfMethod(JoinPoint joinPoint) {
-		logger.info("Inside method [" + joinPoint.getSignature().getName() + "] @ " + LocalDateTime.now().toString());
+		logger.info("Inside method [" + joinPoint.getSignature().getName() + "/" + joinPoint.getTarget().getClass()
+				+ "] @ " + LocalDateTime.now().toString());
 	}
 
 	@After("allMethod()")
 	public void logEndOfMethod(JoinPoint joinPoint) {
-		logger.info("Outside method [" + joinPoint.getSignature().getName() + "]  @ " + LocalDateTime.now().toString());
+		logger.info("Outside method [" + joinPoint.getSignature().getName() + "/" + joinPoint.getTarget().getClass()
+				+ "]  @ " + LocalDateTime.now().toString());
 	}
 }
