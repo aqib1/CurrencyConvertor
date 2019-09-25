@@ -2,6 +2,7 @@ package com.conichi.currency.converter.unit.helper;
 
 import org.springframework.http.ResponseEntity;
 
+import com.conichi.currency.converter.entities.CurrencyConverterEntity;
 import com.example.model.CCRequestDto;
 import com.example.model.QueryDto;
 import com.example.model.ResponseConvertDto;
@@ -13,6 +14,7 @@ import com.example.model.ResultsDto;
 
 public class DataHelper {
 
+	public static final String QUERY = "USD_PKR";
 	public static final String SOURCE_CURR = "US";
 	public static final String TAR_CURR = "PKR";
 	public static final int CONVR_AMNT = 3;
@@ -64,7 +66,20 @@ public class DataHelper {
 		return new ResponseConvertDto().createdAt("19.21.2019").result(300.42).query(new QueryDto().count(1))
 				.results(results);
 	}
-
+	
+	public static CurrencyConverterEntity getCurrencyConverterEntity() {
+		CurrencyConverterEntity entity = new CurrencyConverterEntity();
+		entity.setId(1l);
+		entity.setConvertionValue(1.0);
+		entity.setCountResult(1);
+		entity.setQuery("USD_PKR");
+		entity.setResultFr("USD");
+		entity.setResultTo("PKR");
+		entity.setInsertedDate("12.21.2019");
+		entity.setResult(300.24);
+		return entity;
+	}
+	
 	private DataHelper() {
 
 	}

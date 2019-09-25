@@ -16,16 +16,16 @@ import com.conichi.currency.converter.service.CCCacheService;
 public class CCCacheServiceImpl implements CCCacheService {
 
 	private ReadWriteLock reentrantLock = new ReentrantReadWriteLock();
-	private Lock readLock  = reentrantLock.readLock();
+	private Lock readLock = reentrantLock.readLock();
 	private Lock writeLock = reentrantLock.writeLock();
 	@Autowired
 	private CurrencyConverterRepository repository;
 
 	@Override
-	public void writeCache(CurrencyConverterEntity entity) {
+	public CurrencyConverterEntity writeCache(CurrencyConverterEntity entity) {
 		writeLock.lock();
 		try {
-			repository.save(entity);
+			return repository.save(entity);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while presisting data => " + e.getMessage(), e);
 		} finally {
@@ -56,6 +56,18 @@ public class CCCacheServiceImpl implements CCCacheService {
 			throw new CachePresistException("Exeption occured while deleting data => " + e.getMessage(), e);
 		} finally {
 			writeLock.unlock();
+		}
+	}
+
+	@Override
+	public long count() {
+		readLock.lock();
+		try {
+			return repository.count();
+		} catch (Exception e) {
+			throw new CachePresistException("Exeption occured while counting data => " + e.getMessage(), e);
+		} finally {
+			readLock.unlock();
 		}
 	}
 }

@@ -22,6 +22,7 @@
 		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 		<swagger-annotations-version>1.5.22</swagger-annotations-version>
 		<feign.version>1.4.7.RELEASE</feign.version>
+		<openpojo-version>0.8.10</openpojo-version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -36,6 +37,11 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<dependency>
+			<groupId>com.openpojo</groupId>
+			<artifactId>openpojo</artifactId>
+			<version>${openpojo-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>

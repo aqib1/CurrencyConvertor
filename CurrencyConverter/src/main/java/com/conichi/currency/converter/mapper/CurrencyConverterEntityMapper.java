@@ -5,8 +5,6 @@ import org.mapstruct.Mapping;
 
 import com.conichi.currency.converter.entities.CurrencyConverterEntity;
 import com.example.model.ResponseConvertDto;
-import com.example.model.ResultValueDto;
-import com.example.model.ResultsDto;
 
 /**
  * @author Aqib_Javed
