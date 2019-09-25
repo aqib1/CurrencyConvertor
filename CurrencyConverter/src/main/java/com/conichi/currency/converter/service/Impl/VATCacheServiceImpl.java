@@ -21,10 +21,10 @@ public class VATCacheServiceImpl implements VATCacheService {
 	private VATValidatorRepository repository;
 
 	@Override
-	public void writeCache(VATValidatorEntity entity) {
+	public VATValidatorEntity writeCache(VATValidatorEntity entity) {
 		writeLock.lock();
 		try {
-			repository.save(entity);
+			return repository.save(entity);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while presisting data => " + e.getMessage(), e);
 		} finally {
@@ -55,6 +55,18 @@ public class VATCacheServiceImpl implements VATCacheService {
 			throw new CachePresistException("Exeption occured while deleting data => " + e.getMessage(), e);
 		} finally {
 			writeLock.unlock();
+		}
+	}
+
+	@Override
+	public long count() {
+		readLock.lock();
+		try {
+			return repository.count();
+		} catch (Exception e) {
+			throw new CachePresistException("Exeption occured while counting data => " + e.getMessage(), e);
+		} finally {
+			readLock.unlock();
 		}
 	}
 

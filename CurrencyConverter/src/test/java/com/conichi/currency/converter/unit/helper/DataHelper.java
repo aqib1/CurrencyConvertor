@@ -3,6 +3,7 @@ package com.conichi.currency.converter.unit.helper;
 import org.springframework.http.ResponseEntity;
 
 import com.conichi.currency.converter.entities.CurrencyConverterEntity;
+import com.conichi.currency.converter.entities.VATValidatorEntity;
 import com.example.model.CCRequestDto;
 import com.example.model.QueryDto;
 import com.example.model.ResponseConvertDto;
@@ -66,7 +67,7 @@ public class DataHelper {
 		return new ResponseConvertDto().createdAt("19.21.2019").result(300.42).query(new QueryDto().count(1))
 				.results(results);
 	}
-	
+
 	public static CurrencyConverterEntity getCurrencyConverterEntity() {
 		CurrencyConverterEntity entity = new CurrencyConverterEntity();
 		entity.setId(1l);
@@ -79,7 +80,20 @@ public class DataHelper {
 		entity.setResult(300.24);
 		return entity;
 	}
-	
+
+	public static VATValidatorEntity getValiatorEntity() {
+		VATValidatorEntity validatorEntity = new VATValidatorEntity();
+		validatorEntity.setCompanyAddress("US Cherm 34, Timiler, 11 mm");
+		validatorEntity.setCompanyName("Timiler");
+		validatorEntity.setCountryCode("US");
+		validatorEntity.setQuery("12CVAERT");
+		validatorEntity.setSuccess(true);
+		validatorEntity.setValid(true);
+		validatorEntity.setValidFormat(true);
+		validatorEntity.setVatNumber("1TVAT1236");
+		return validatorEntity;
+	}
+
 	private DataHelper() {
 
 	}
