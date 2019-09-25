@@ -2,6 +2,7 @@ package com.conichi.currency.converter.helper;
 
 import org.springframework.http.ResponseEntity;
 
+import com.example.model.CCRequestDto;
 import com.example.model.QueryDto;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
@@ -40,6 +41,10 @@ public class DataHelper {
 
 	public static ResponseEntity<ResponseShortConvertDto> getEntityResponseShortConvertDto() {
 		return ResponseEntity.ok().body(new ResponseShortConvertDto().createdAt("19.21.2019").result(3.45));
+	}
+
+	public static CCRequestDto getCCRequestDto() {
+		return new CCRequestDto().amount(1).targetCurrency("PKR").sourceCurrency("USD");
 	}
 
 	public static ResponseShortConvertDto getResponseShortConvertDto() {
