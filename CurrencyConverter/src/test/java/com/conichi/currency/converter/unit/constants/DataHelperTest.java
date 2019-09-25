@@ -1,4 +1,4 @@
-package com.conichi.currency.converter.unit;
+package com.conichi.currency.converter.unit.constants;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.conichi.currency.converter.unit.helper.DataHelper;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ConstantTest {
+public class DataHelperTest {
 
 	@Test
 	public void testIsNotNullOrEmptyString() {
