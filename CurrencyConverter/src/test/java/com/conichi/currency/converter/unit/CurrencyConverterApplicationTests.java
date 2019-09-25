@@ -5,8 +5,7 @@ import java.lang.reflect.Method;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.conichi.currency.converter.CurrencyConverterApplication;
 
@@ -15,8 +14,7 @@ import com.conichi.currency.converter.CurrencyConverterApplication;
  * @version 1.0
  * @since 9/16/2019
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class CurrencyConverterApplicationTests {
 
 	/**
