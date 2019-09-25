@@ -12,6 +12,10 @@ import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseVatDetailDto;
 
+/**
+ * @author AQIB JAVED
+ *
+ */
 public final class CCHelper {
 	private static final Logger logger = LoggerFactory.getLogger(CCHelper.class);
 	public static final String COMPONENT_SCAN_PATH = "com.conichi.currency.converter";
@@ -27,7 +31,7 @@ public final class CCHelper {
 		return Objects.isNull(object);
 	}
 
-	public static void checkCoreRequirements(CCRequestDto requestDto) {
+	public static void checkCoreRequirementsForCCRequestDto(CCRequestDto requestDto) {
 		logger.info("Checking core requirements of request[" + requestDto + "]");
 		if (Objects.isNull(requestDto)) {
 			throw new InvalidRequestException("Request is empty or null");

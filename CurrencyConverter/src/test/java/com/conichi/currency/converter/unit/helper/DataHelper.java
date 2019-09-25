@@ -42,12 +42,60 @@ public class DataHelper {
 				.countryCode("US").query("12CVAERT").success(true).valid(true).validFormat(true).vatNumber("1TVAT1236");
 	}
 
+	public static ResponseVatDetailDto getResponseVatDtoWithoutVatNumber() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.countryCode("US").query("12CVAERT").success(true).valid(true).validFormat(true);
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutValidFormat() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.countryCode("US").query("12CVAERT").success(true).valid(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutValid() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.countryCode("US").query("12CVAERT").success(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutSucess() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.countryCode("US").query("12CVAERT").valid(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutQuery() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.countryCode("US").success(true).valid(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutCCode() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").companyName("Timiler")
+				.query("12CVAERT").success(true).valid(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutCName() {
+		return new ResponseVatDetailDto().companyAddress("US Cherm 34, Timiler, 11 mm").countryCode("US")
+				.query("12CVAERT").success(true).valid(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
+	public static ResponseVatDetailDto getResponseVatDtoWithoutCAdr() {
+		return new ResponseVatDetailDto().companyName("Timiler").countryCode("US").query("12CVAERT").success(true)
+				.valid(true).validFormat(true).vatNumber("1TVAT1236");
+	}
+
 	public static ResponseEntity<ResponseShortConvertDto> getEntityResponseShortConvertDto() {
 		return ResponseEntity.ok().body(new ResponseShortConvertDto().createdAt("19.21.2019").result(3.45));
 	}
 
 	public static CCRequestDto getCCRequestDto() {
 		return new CCRequestDto().amount(1).targetCurrency("PKR").sourceCurrency("USD");
+	}
+
+	public static CCRequestDto getCCRequestDtoWithoutTarget() {
+		return new CCRequestDto().amount(1).sourceCurrency("USD");
+	}
+
+	public static CCRequestDto getCCRequestDtoWithoutSource() {
+		return new CCRequestDto().amount(1).targetCurrency("PKR");
 	}
 
 	public static ResponseShortConvertDto getResponseShortConvertDto() {

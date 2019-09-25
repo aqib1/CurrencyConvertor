@@ -33,7 +33,7 @@ public class CurrencyConverterBusiness {
 
 	public ResponseShortConvertDto currencyConvert(CCRequestDto requestDto) {
 		logger.info("checking core requirements for requestDto => " + requestDto);
-		CCHelper.checkCoreRequirements(requestDto);
+		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		logger.info("checking cache if contains details for => " + requestDto);
 		ResponseShortConvertDto response = cCCacheBusiness.convertCurrency(requestDto);
 		if (!Objects.isNull(response))
@@ -48,7 +48,7 @@ public class CurrencyConverterBusiness {
 
 	public ResponseConvertDto currencyConvertDetailed(CCRequestDto requestDto) {
 		logger.info("checking core requirements for requestDto " + requestDto);
-		CCHelper.checkCoreRequirements(requestDto);
+		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		logger.info("checking cache if contains details for => " + requestDto);
 		ResponseConvertDto responseConvertDto = cCCacheBusiness.convertCurrencyDetailed(requestDto);
 		if (!Objects.isNull(responseConvertDto))

@@ -32,14 +32,14 @@ public class CCCacheBusiness {
 	private ResponseConvertDtoMapper responseConvertDtoMapper;
 
 	public ResponseShortConvertDto convertCurrency(CCRequestDto requestDto) {
-		CCHelper.checkCoreRequirements(requestDto);
+		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseShortMapper.currencyConverterEntityToResponseShortDto(cacheService.read(query));
 	}
 
 	public ResponseConvertDto convertCurrencyDetailed(CCRequestDto requestDto) {
-		CCHelper.checkCoreRequirements(requestDto);
+		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseConvertDtoMapper.responseConvertDtoFromCurrencyConverterEntity(cacheService.read(query));
