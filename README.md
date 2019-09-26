@@ -27,7 +27,7 @@ BONUS: dockerize your application (i.e. include a Dockerﬁle, docker-compose.ym
 For implementation as Micro-service architecture, Spring cloud technology is used, Netflix Eureka server is used for service registry. 
 For the sake of this task, a single micro-service as the eureka client is created along with a eureka server.
 The complete application is created using the test-driven approach. That's is the reason application contains a large number of test cases.
-In netflix-client, two controllers are written, which details on abstraction level is given hereinafter.
+In netflix-client, two controllers are written, which details on abstraction level is given hereinafter. API is configured on port 8081
  - CurrencyConverterController
  - VATController
  
