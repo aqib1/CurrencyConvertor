@@ -34,8 +34,11 @@ In netflix-client, two controllers are written, which details on abstraction lev
 CurrencyConverterController is a rest controller which further consists of two types of API, keep in mind that each rest API is created while keeping in mind of the 2nd-degree maturity level of  Rest API level defined by Richardson, In future commits, API will be upgraded to 3rd degree using HATEOAS.
 
 1- API documentations and details are created using swagger 3.0, common objects are using created by swagger 3.0. Swagger configuration file is placed under resources with the namme of api.yaml
+
 2- Logging also implementated with rolling file policy. its configuration is also available under resource folder.
+
 3- Keep in mind that you cannot run application until you did not start the eureka server, as the client needs to register itself with the server (configuration provided in the application).
+
 4- For currency conversion and vat validation two different free API used, Those API are connected using Netflix-Feign declarative HTTP client which is also the part of Spring cloud technology.
 
  
