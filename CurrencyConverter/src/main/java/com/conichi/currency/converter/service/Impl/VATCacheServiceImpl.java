@@ -19,6 +19,10 @@ import com.conichi.currency.converter.service.VATCacheService;
  */
 @Service
 public class VATCacheServiceImpl implements VATCacheService {
+	/**
+	 * 
+	 */
+	private static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(VATCacheServiceImpl.class.getName());
 	private ReadWriteLock reentrantLock = new ReentrantReadWriteLock();
 	private Lock readLock = reentrantLock.readLock();
 	private Lock writeLock = reentrantLock.writeLock();
@@ -29,6 +33,7 @@ public class VATCacheServiceImpl implements VATCacheService {
 	public VATValidatorEntity writeCache(VATValidatorEntity entity) {
 		writeLock.lock();
 		try {
+			logger.debug("saving entity["+entity+"] in VATValidatorRepository");
 			return repository.save(entity);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while presisting data => " + e.getMessage(), e);
@@ -41,6 +46,7 @@ public class VATCacheServiceImpl implements VATCacheService {
 	public VATValidatorEntity read(String query) {
 		readLock.lock();
 		try {
+			logger.debug("read against query["+query+"] from VATValidatorRepository");
 			return repository.findByQuery(query);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while reading data => " + e.getMessage(), e);
@@ -54,6 +60,7 @@ public class VATCacheServiceImpl implements VATCacheService {
 		writeLock.lock();
 		try {
 			if (repository.count() > 0) {
+				logger.debug("delete all from VATValidatorRepository");
 				repository.deleteAll();
 			}
 		} catch (Exception e) {
@@ -67,6 +74,7 @@ public class VATCacheServiceImpl implements VATCacheService {
 	public long count() {
 		readLock.lock();
 		try {
+			logger.debug("count all from VATValidatorRepository");
 			return repository.count();
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while counting data => " + e.getMessage(), e);

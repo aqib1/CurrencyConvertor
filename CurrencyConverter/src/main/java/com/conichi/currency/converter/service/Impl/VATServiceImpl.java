@@ -20,9 +20,14 @@ import feign.slf4j.Slf4jLogger;
  */
 @Service
 public class VATServiceImpl implements VATService {
+	/**
+	 * 
+	 */
+	private static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(VATServiceImpl.class.getName());
 
 	@Override
 	public ResponseVatDetailDto validateVat(String vat) {
+		logger.debug("validating vat against ID["+vat+"] from "+VAT_API);
 		VATValidatorAPI vatAPI = FeignBuilderFactory.getFeignBuilder().logger(new Slf4jLogger(VATValidatorAPI.class))
 				.logLevel(Logger.Level.FULL).target(VATValidatorAPI.class, VAT_API);
 		ResponseVatDetailDto response = vatAPI.validateVatId(vat);

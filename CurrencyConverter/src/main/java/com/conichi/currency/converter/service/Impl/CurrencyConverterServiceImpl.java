@@ -26,17 +26,26 @@ import feign.slf4j.Slf4jLogger;
  */
 @Service
 public class CurrencyConverterServiceImpl implements CurrencyConverterService {
+	/**
+	 * 
+	 */
+	private static org.slf4j.Logger logger = org.slf4j.LoggerFactory
+			.getLogger(CurrencyConverterServiceImpl.class.getName());
 
 	@Override
 	public ResponseConvertDto currencyConvert(CCRequestDto request) {
 		ResponseConvertDto response = null;
 		try {
+			logger.debug("Sending request[" + request + "] to feign client");
 			CurrencyLayerAPI client = FeignBuilderFactory.getFeignBuilder()
 					.logger(new Slf4jLogger(CurrencyLayerAPI.class)).logLevel(Logger.Level.FULL)
 					.target(CurrencyLayerAPI.class, CURRENCYCONV_API);
 			response = client.currencyConverter(request.getSourceCurrency(), request.getTargetCurrency());
+			logger.debug("response recieved [" + response + "]");
 			validateResponse(response);
+			logger.debug("calculate result from detailed recived");
 			response.setResult(getResultValue(response, request));
+			logger.debug("validate response after calculating results");
 			checkResultValidation(response);
 		} catch (Exception e) {
 			throw new BadInternalServerException("BadInternalServerException => " + e.toString(), e);
