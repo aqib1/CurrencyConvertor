@@ -37,7 +37,7 @@ CurrencyConverterController is a rest controller which further consists of two t
 
 2- Logging also implementated with rolling file policy. its configuration is also available under resource folder.
 
-3- Keep in mind that you cannot run application until you did not start the eureka server, as the client needs to register itself with the server (configuration provided in the application).
+3- Keep in mind that you are not able to run application until you did not start the eureka server, as the client needs to register itself with the server (configuration provided in the application).
 
 4- For currency conversion and vat validation two different free API used, Those API are connected using Netflix-Feign declarative HTTP client which is also the part of Spring cloud technology.
 
