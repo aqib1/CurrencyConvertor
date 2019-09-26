@@ -53,7 +53,7 @@ CurrencyConverterController is a rest controller which further consists of two t
 After creating image you can see image in your docker by docker image ls. Now lets add tag to that image by command docker tag image_id TAG_NAME. After that you can push image to your docker hub by docker push TAG_NAME
 
 # Docker image
-Application is completely dockerize and image is uploaded to docker-hub with the name aqibbutt3078/ccvatapi:latest
+Application is completely dockerize and images are uploaded to docker-hub with the name aqibbutt3078/ccvatapi for micro-service eureka client and aqibbutt3078/ccvatapi_eureka for eurka server
  
 # Currency Converter
 Currency Converter API consists on two API's 
