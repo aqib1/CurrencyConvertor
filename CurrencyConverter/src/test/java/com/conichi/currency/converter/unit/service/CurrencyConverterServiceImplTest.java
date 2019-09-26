@@ -14,6 +14,11 @@ import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class CurrencyConverterServiceImplTest {
 

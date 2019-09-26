@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class BadInternalServerExceptionTest {
 	@Test
 	public void contextLoads() throws NoSuchMethodException, SecurityException, InstantiationException,

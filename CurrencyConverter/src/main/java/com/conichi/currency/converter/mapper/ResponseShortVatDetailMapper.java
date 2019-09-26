@@ -14,6 +14,10 @@ import com.example.model.ResponseVatDetailDto;
 @Mapper(componentModel = "spring")
 public interface ResponseShortVatDetailMapper {
 
+	/**
+	 * @param responseVatDetailDto
+	 * @return
+	 */
 	@Mapping(target = "countryCode", source = "countryCode")
 	@Mapping(target = "validFormat", source = "validFormat")
 	ResponseShortVatDetailDto responseVatDetailDtoToResponseShortVatDetailDto(

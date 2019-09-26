@@ -12,6 +12,11 @@ import com.conichi.currency.converter.exceptions.CachePresistException;
 import com.conichi.currency.converter.repository.VATValidatorRepository;
 import com.conichi.currency.converter.service.VATCacheService;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Service
 public class VATCacheServiceImpl implements VATCacheService {
 	private ReadWriteLock reentrantLock = new ReentrantReadWriteLock();

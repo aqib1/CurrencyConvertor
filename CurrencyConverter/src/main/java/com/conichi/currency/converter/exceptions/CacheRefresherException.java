@@ -12,6 +12,9 @@ public class CacheRefresherException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = -734025269428477386L;
 
+	/**
+	 * @param message
+	 */
 	public CacheRefresherException(String message) {
 		super(message);
 	}

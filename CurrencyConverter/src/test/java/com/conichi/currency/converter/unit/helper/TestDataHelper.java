@@ -22,6 +22,11 @@ import com.example.model.ResponseVatDetailDto;
 import com.example.model.ResultValueDto;
 import com.example.model.ResultsDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class TestDataHelper {
 
 	public static final String CURRENCY_API_QUERY_FOR_TEST = "?source=PKR&target=USD&amount=100";

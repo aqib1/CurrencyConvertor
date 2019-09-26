@@ -14,9 +14,21 @@ import com.example.model.ResponseVatDetailDto;
 @Mapper(componentModel = "spring")
 public interface VATValidatorEntityMapper {
 
+	/**
+	 * @param responseVatDetailDto
+	 * @return
+	 */
 	VATValidatorEntity responseVatDetailDtoToVATValidatorEntity (ResponseVatDetailDto responseVatDetailDto);
 
+	/**
+	 * @param entity
+	 * @return
+	 */
 	ResponseVatDetailDto vATValidatorEntityToResponseVatDetailDto (VATValidatorEntity entity);
 	
+	/**
+	 * @param entity
+	 * @return
+	 */
 	ResponseShortVatDetailDto vATValidatorEntityToResponseShortVatDetailDto (VATValidatorEntity entity);
 }

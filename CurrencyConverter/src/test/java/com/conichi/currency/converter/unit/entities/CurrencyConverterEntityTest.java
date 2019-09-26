@@ -12,6 +12,11 @@ import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class CurrencyConverterEntityTest {
 	@Test
 	public void testGetterSetter() {

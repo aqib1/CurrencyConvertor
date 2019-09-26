@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import com.conichi.currency.converter.exceptions.InvalidParamException;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class InvalidParamExceptionTest {
 	@Test
 	public void contextLoads() throws NoSuchMethodException, SecurityException, InstantiationException,

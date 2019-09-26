@@ -15,10 +15,18 @@ import com.example.model.ResponseShortConvertDto;
 @Mapper(componentModel = "spring")
 public interface ResponseShortConvertMapper {
 
+	/**
+	 * @param responseConvertDto
+	 * @return
+	 */
 	@Mapping(target = "result", source = "result")
 	@Mapping(target = "createdAt", source = "createdAt")
 	ResponseShortConvertDto responseConvertDtoToResponseShortConvertDto(ResponseConvertDto responseConvertDto);
 
+	/**
+	 * @param converterEntity
+	 * @return
+	 */
 	@Mapping(target = "result", source = "result")
 	@Mapping(target = "createdAt", source = "insertedDate")
 	ResponseShortConvertDto currencyConverterEntityToResponseShortDto(CurrencyConverterEntity converterEntity);

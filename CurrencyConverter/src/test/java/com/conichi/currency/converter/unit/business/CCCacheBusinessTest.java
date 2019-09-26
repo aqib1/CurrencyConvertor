@@ -15,6 +15,11 @@ import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class CCCacheBusinessTest {
 
@@ -52,7 +57,8 @@ public class CCCacheBusinessTest {
 
 	@Test
 	public void testConvertCurrencyDetails() {
-		ResponseConvertDto responseConvertDto = ccCacheBusiness.convertCurrencyDetailed(TestDataHelper.getCCRequestDto());
+		ResponseConvertDto responseConvertDto = ccCacheBusiness
+				.convertCurrencyDetailed(TestDataHelper.getCCRequestDto());
 		Assert.assertEquals((Double) 300.42, responseConvertDto.getResult());
 		Assert.assertEquals("19.21.2019", responseConvertDto.getCreatedAt());
 		Assert.assertTrue(1 == responseConvertDto.getQuery().getCount());

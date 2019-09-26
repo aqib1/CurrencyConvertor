@@ -19,11 +19,21 @@ import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.example.model.ResponseError;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @RestControllerAdvice
 public class ControllerExceptionsAdvice {
 
 	private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionsAdvice.class);
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { BadInternalServerException.class })
 	public ResponseEntity<ResponseError> handleBadInternalServerException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
@@ -35,6 +45,11 @@ public class ControllerExceptionsAdvice {
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { InvalidParamException.class })
 	public ResponseEntity<ResponseError> handleInvalidParamException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
@@ -46,6 +61,11 @@ public class ControllerExceptionsAdvice {
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { InvalidRequestException.class })
 	public ResponseEntity<ResponseError> handleInvalidRequestException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
@@ -57,6 +77,11 @@ public class ControllerExceptionsAdvice {
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { InvalidResponseException.class })
 	public ResponseEntity<ResponseError> handleInvalidResponseException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
@@ -68,6 +93,11 @@ public class ControllerExceptionsAdvice {
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 	}
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { CachePresistException.class })
 	public ResponseEntity<ResponseError> handleCachePresistException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())
@@ -79,6 +109,11 @@ public class ControllerExceptionsAdvice {
 		return new ResponseEntity<>(errorResponse, HttpStatus.EXPECTATION_FAILED);
 	}
 
+	/**
+	 * @param e
+	 * @param wr
+	 * @return
+	 */
 	@ExceptionHandler(value = { CacheRefresherException.class })
 	public ResponseEntity<ResponseError> handleCacheRefresherException(RuntimeException e, WebRequest wr) {
 		String error = Optional.of(e.getMessage()).orElse(e.getClass().getName())

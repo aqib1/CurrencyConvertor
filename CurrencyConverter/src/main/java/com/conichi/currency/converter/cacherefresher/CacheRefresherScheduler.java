@@ -10,6 +10,11 @@ import com.conichi.currency.converter.exceptions.CacheRefresherException;
 import com.conichi.currency.converter.service.CCCacheService;
 import com.conichi.currency.converter.service.VATCacheService;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Component
 public class CacheRefresherScheduler {
 
@@ -21,6 +26,9 @@ public class CacheRefresherScheduler {
 	@Autowired
 	private VATCacheService vatCacheService;
 
+	/**
+	 * 
+	 */
 	@Scheduled(fixedDelay = 86400000)
 	public void ccCacheRefresher() {
 		logger.info("cache refresher invoked!!");
@@ -31,6 +39,9 @@ public class CacheRefresherScheduler {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Scheduled(fixedDelay = 129600000)
 	public void vvCacheRefresher() {
 		logger.info("cache refresher invoked!!");

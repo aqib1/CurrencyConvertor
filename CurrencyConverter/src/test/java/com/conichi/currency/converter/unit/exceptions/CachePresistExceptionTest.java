@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import com.conichi.currency.converter.exceptions.CachePresistException;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class CachePresistExceptionTest {
 	@Test
 	public void contextLoads() throws NoSuchMethodException, SecurityException, InstantiationException,

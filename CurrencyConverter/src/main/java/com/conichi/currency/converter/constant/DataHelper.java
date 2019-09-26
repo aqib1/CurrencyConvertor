@@ -14,7 +14,8 @@ import com.example.model.ResponseVatDetailDto;
 
 /**
  * @author AQIB JAVED
- *
+ * @since 9/26/2019
+ * @version 1.0
  */
 public final class DataHelper {
 	private static final Logger logger = LoggerFactory.getLogger(DataHelper.class);
@@ -23,14 +24,25 @@ public final class DataHelper {
 	public static final String UNDER_SCORE = "_";
 	public static final String CACHE_REFRESHER_VALUE = "cahce.refresher.scheduler";
 
+	/**
+	 * @param string
+	 * @return
+	 */
 	public static boolean isNullOrEmptyString(String string) {
 		return Objects.isNull(string) || string.isEmpty();
 	}
 
+	/**
+	 * @param object
+	 * @return
+	 */
 	public static boolean isNull(Object object) {
 		return Objects.isNull(object);
 	}
 
+	/**
+	 * @param requestDto
+	 */
 	public static void checkCoreRequirementsForCCRequestDto(CCRequestDto requestDto) {
 		logger.info("Checking core requirements of request[" + requestDto + "]");
 		if (Objects.isNull(requestDto)) {
@@ -44,6 +56,9 @@ public final class DataHelper {
 		}
 	}
 
+	/**
+	 * @param response
+	 */
 	public static void validateVatResponse(ResponseVatDetailDto response) {
 		if (DataHelper.isNull(response) || DataHelper.isNullOrEmptyString(response.getCompanyAddress())
 				|| DataHelper.isNullOrEmptyString(response.getCompanyName())

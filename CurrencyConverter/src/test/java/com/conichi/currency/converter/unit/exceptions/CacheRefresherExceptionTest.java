@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import com.conichi.currency.converter.exceptions.CacheRefresherException;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class CacheRefresherExceptionTest {
 	@Test
 	public void contextLoads() throws NoSuchMethodException, SecurityException, InstantiationException,

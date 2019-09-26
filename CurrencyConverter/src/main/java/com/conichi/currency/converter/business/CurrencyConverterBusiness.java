@@ -16,7 +16,8 @@ import com.example.model.ResponseShortConvertDto;
 
 /**
  * @author Aqib_Javed
- *
+ * @since 9/26/2019
+ * @version 1.0
  */
 @Component
 public class CurrencyConverterBusiness {
@@ -31,6 +32,10 @@ public class CurrencyConverterBusiness {
 	@Autowired
 	private ResponseShortConvertMapper responseShortConvertMapper;
 
+	/**
+	 * @param requestDto
+	 * @return
+	 */
 	public ResponseShortConvertDto currencyConvert(CCRequestDto requestDto) {
 		logger.info("checking core requirements for requestDto => " + requestDto);
 		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);
@@ -46,6 +51,10 @@ public class CurrencyConverterBusiness {
 		return responseShortConvertMapper.responseConvertDtoToResponseShortConvertDto(responseConvertDto);
 	}
 
+	/**
+	 * @param requestDto
+	 * @return
+	 */
 	public ResponseConvertDto currencyConvertDetailed(CCRequestDto requestDto) {
 		logger.info("checking core requirements for requestDto " + requestDto);
 		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);

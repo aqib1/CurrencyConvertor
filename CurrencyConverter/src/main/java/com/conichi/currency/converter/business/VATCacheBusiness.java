@@ -13,6 +13,11 @@ import com.conichi.currency.converter.service.VATCacheService;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Component
 public class VATCacheBusiness {
 
@@ -24,6 +29,10 @@ public class VATCacheBusiness {
 	@Autowired
 	private VATValidatorEntityMapper mapper;
 
+	/**
+	 * @param vat
+	 * @return
+	 */
 	public ResponseVatDetailDto validateVatDetails(String vat) {
 		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidParamException("vat id can not be null or empty");
@@ -31,6 +40,10 @@ public class VATCacheBusiness {
 		return mapper.vATValidatorEntityToResponseVatDetailDto(vatCacheService.read(vat));
 	}
 
+	/**
+	 * @param vat
+	 * @return
+	 */
 	public ResponseShortVatDetailDto validateVat(String vat) {
 		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidParamException("vat id can not be null or empty");
@@ -38,6 +51,9 @@ public class VATCacheBusiness {
 		return mapper.vATValidatorEntityToResponseShortVatDetailDto(vatCacheService.read(vat));
 	}
 
+	/**
+	 * @param response
+	 */
 	public void presist(ResponseVatDetailDto response) {
 		logger.info("converting response to entity object against response => ["+response+"]");
 		VATValidatorEntity entity = mapper.responseVatDetailDtoToVATValidatorEntity(response);

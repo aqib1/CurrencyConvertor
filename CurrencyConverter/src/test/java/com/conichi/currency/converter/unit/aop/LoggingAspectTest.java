@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import com.conichi.currency.converter.aop.LoggingAspect;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public class LoggingAspectTest {
 
 	@Test

@@ -19,6 +19,11 @@ import com.example.model.ResponseConvertDto;
 import feign.Logger;
 import feign.slf4j.Slf4jLogger;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Service
 public class CurrencyConverterServiceImpl implements CurrencyConverterService {
 

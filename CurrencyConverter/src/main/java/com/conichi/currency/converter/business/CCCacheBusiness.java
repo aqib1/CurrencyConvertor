@@ -15,6 +15,11 @@ import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Component
 public class CCCacheBusiness {
 	private static final Logger logger = LoggerFactory.getLogger(CCCacheBusiness.class);
@@ -31,6 +36,10 @@ public class CCCacheBusiness {
 	@Autowired
 	private ResponseConvertDtoMapper responseConvertDtoMapper;
 
+	/**
+	 * @param requestDto
+	 * @return
+	 */
 	public ResponseShortConvertDto convertCurrency(CCRequestDto requestDto) {
 		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		String query = requestDto.getSourceCurrency() + DataHelper.UNDER_SCORE + requestDto.getTargetCurrency();
@@ -38,6 +47,10 @@ public class CCCacheBusiness {
 		return responseShortMapper.currencyConverterEntityToResponseShortDto(cacheService.read(query));
 	}
 
+	/**
+	 * @param requestDto
+	 * @return
+	 */
 	public ResponseConvertDto convertCurrencyDetailed(CCRequestDto requestDto) {
 		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);
 		String query = requestDto.getSourceCurrency() + DataHelper.UNDER_SCORE + requestDto.getTargetCurrency();
@@ -45,6 +58,10 @@ public class CCCacheBusiness {
 		return responseConvertDtoMapper.responseConvertDtoFromCurrencyConverterEntity(cacheService.read(query));
 	}
 
+	/**
+	 * @param query
+	 * @param response
+	 */
 	public void presist(String query, ResponseConvertDto response) {
 		logger.info("convert reposne to entity object");
 		CurrencyConverterEntity entity = responseConverDtoMapper.currencyConverterEntityFromResponseConvertDto(response,

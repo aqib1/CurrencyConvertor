@@ -11,6 +11,9 @@ public class CachePresistException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 6400145587508655927L;
 
+	/**
+	 * @param message
+	 */
 	public CachePresistException(String message) {
 		super(message);
 	}

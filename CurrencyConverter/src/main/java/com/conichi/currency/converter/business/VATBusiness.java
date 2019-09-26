@@ -12,6 +12,11 @@ import com.conichi.currency.converter.service.VATService;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @Component
 public class VATBusiness {
 
@@ -26,6 +31,10 @@ public class VATBusiness {
 	@Autowired
 	private VATCacheBusiness vatCacheBusiness;
 
+	/**
+	 * @param vat
+	 * @return
+	 */
 	public ResponseVatDetailDto validateVatDetails(String vat) {
 		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidRequestException("vat id can not be null or empty");
@@ -40,6 +49,10 @@ public class VATBusiness {
 		return responseVatDetailDto;
 	}
 
+	/**
+	 * @param vat
+	 * @return
+	 */
 	public ResponseShortVatDetailDto validateVat(String vat) {
 		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidRequestException("vat id can not be null or empty");

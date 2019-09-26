@@ -15,6 +15,11 @@ import com.conichi.currency.converter.business.VATBusiness;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @RestController
 @RequestMapping(API_VAT_VALIDATION)
 public class VATController {

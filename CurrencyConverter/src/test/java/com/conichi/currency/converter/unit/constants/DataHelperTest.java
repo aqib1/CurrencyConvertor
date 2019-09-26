@@ -10,6 +10,11 @@ import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.conichi.currency.converter.unit.helper.TestDataHelper;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class DataHelperTest {
 

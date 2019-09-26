@@ -1,5 +1,10 @@
 package com.conichi.currency.converter.constant;
 
+/**
+ * @author AQIB JAVED
+ * @since 9/26/2019
+ * @version 1.0
+ */
 public final class URLS {
 
 	public static final String API_CURRENCY_CONVERT = "/api/currency/convert";

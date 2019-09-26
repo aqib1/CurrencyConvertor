@@ -16,12 +16,20 @@ import com.example.model.ResultsDto;
  */
 @Mapper(componentModel = "spring")
 public interface ResponseConvertDtoMapper {
+	/**
+	 * @param entity
+	 * @return
+	 */
 	@Mapping(source = "entity.result", target = "result")
 	@Mapping(source = "entity.countResult", target = "query.count")
 	@Mapping(target = "results", qualifiedByName = "getResults", source = "entity")
 	@Mapping(target = "createdAt", source = "insertedDate")
 	ResponseConvertDto responseConvertDtoFromCurrencyConverterEntity(CurrencyConverterEntity entity);
 
+	/**
+	 * @param entity
+	 * @return
+	 */
 	@Named("getResults")
 	default ResultsDto getResults(CurrencyConverterEntity entity) {
 		ResultsDto resultsDto = new ResultsDto();

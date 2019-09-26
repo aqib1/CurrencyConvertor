@@ -14,6 +14,11 @@ import com.example.model.ResponseConvertDto;
 @Mapper(componentModel = "spring")
 public interface CurrencyConverterEntityMapper {
 
+	/**
+	 * @param responseConvertDto
+	 * @param queryString
+	 * @return
+	 */
 	@Mapping(target = "result", source = "responseConvertDto.result")
 	@Mapping(target = "query", source = "queryString")
 	@Mapping(target = "countResult", source = "responseConvertDto.query.count")
