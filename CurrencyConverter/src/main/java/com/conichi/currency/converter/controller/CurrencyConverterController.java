@@ -38,7 +38,9 @@ public class CurrencyConverterController {
 	 * @param targetCurrency
 	 * @param amount
 	 * @return
-	 * <p>/api/currency/convert</p>
+	 *         <p>
+	 *         /api/currency/convert
+	 *         </p>
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<ResponseShortConvertDto> currencyConvert(@RequestParam("source") String sourceCurrency,
@@ -71,10 +73,12 @@ public class CurrencyConverterController {
 	 * @return
 	 */
 	private CCRequestDto getCCRequestDto(String sourceCurrency, String targetCurrency, Integer amount) {
+		logger.info("checking if source, target and amout is valid");
 		if (DataHelper.isNullOrEmptyString(sourceCurrency) || DataHelper.isNullOrEmptyString(targetCurrency)
 				|| DataHelper.isNull(amount)) {
 			throw new InvalidRequestException("Invalid request, parameters are not available.");
 		}
+		logger.info("creating ccrequest object from source, target and amount details");
 		CCRequestDto requestDto = new CCRequestDto();
 		requestDto.setSourceCurrency(sourceCurrency);
 		requestDto.setTargetCurrency(targetCurrency);

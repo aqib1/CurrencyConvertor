@@ -4,6 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,10 @@ import com.conichi.currency.converter.service.CCCacheService;
 @Service
 public class CCCacheServiceImpl implements CCCacheService {
 
+	/**
+	 * 
+	 */
+	private static Logger logger = LoggerFactory.getLogger(CCCacheServiceImpl.class.getName());
 	private ReadWriteLock reentrantLock = new ReentrantReadWriteLock();
 	private Lock readLock = reentrantLock.readLock();
 	private Lock writeLock = reentrantLock.writeLock();
@@ -30,6 +36,7 @@ public class CCCacheServiceImpl implements CCCacheService {
 	public CurrencyConverterEntity writeCache(CurrencyConverterEntity entity) {
 		writeLock.lock();
 		try {
+			logger.debug("storing enity["+entity+"] to repository");
 			return repository.save(entity);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while presisting data => " + e.getMessage(), e);
@@ -42,6 +49,7 @@ public class CCCacheServiceImpl implements CCCacheService {
 	public CurrencyConverterEntity read(String query) {
 		readLock.lock();
 		try {
+			logger.debug("finding enity by query["+query+"] from repository");
 			return repository.findByQuery(query);
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while reading data => " + e.getMessage(), e);
@@ -55,6 +63,7 @@ public class CCCacheServiceImpl implements CCCacheService {
 		writeLock.lock();
 		try {
 			if (repository.count() > 0) {
+				logger.debug("deleting all data from repository");
 				repository.deleteAll();
 			}
 		} catch (Exception e) {
@@ -68,6 +77,7 @@ public class CCCacheServiceImpl implements CCCacheService {
 	public long count() {
 		readLock.lock();
 		try {
+			logger.debug("counting data from repository");
 			return repository.count();
 		} catch (Exception e) {
 			throw new CachePresistException("Exeption occured while counting data => " + e.getMessage(), e);
