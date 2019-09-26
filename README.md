@@ -1,7 +1,7 @@
 # CurrencyConvertor
 
 # Task
-Let's walk through this together: 
+Let's walk through this task: 
 1. Create a new Java / Kotlin Micro-Service Application, utilizing Spring Boot. 
 2. Serve the following API endpoints: 
    Output the current time (as valid JSON) Convert currency inputs endpoint:  /api/currency/convert 
