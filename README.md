@@ -30,11 +30,13 @@ The complete application is created using the test-driven approach. That's is th
 In netflix-client, two controllers are written, which details on abstraction level is given hereinafter.
  - CurrencyConverterController
  - VATController
+ 
 CurrencyConverterController is a rest controller which further consists of two types of API, keep in mind that each rest API is created while keeping in mind of the 2nd-degree maturity level of  Rest API level defined by Richardson, In future commits, API will be upgraded to 3rd degree using HATEOAS.
 # Currency Converter
 Currency Converter API consists on two API's 
 - /api/currency/convert
 - /api/currency/convert/details
+
 First API will going to return convertion detailes as it was asked in task, second API return details with some additional information
 
 
