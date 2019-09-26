@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.conichi.currency.converter.controller.CurrencyConverterController;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
 
@@ -28,16 +28,16 @@ public class CurrencyConverterControllerTest {
 
 	private void mockCurrencyConverterController() {
 		Mockito.when(controller.currencyConvert(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt()))
-				.thenReturn(DataHelper.getEntityResponseShortConvertDto());
+				.thenReturn(TestDataHelper.getEntityResponseShortConvertDto());
 		Mockito.when(controller.currencyConvertDetails(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt()))
-				.thenReturn(DataHelper.getEntityResponseConvertDto());
+				.thenReturn(TestDataHelper.getEntityResponseConvertDto());
 
 	}
 
 	@Test
 	public void testCurrencyConvert() {
-		ResponseEntity<ResponseShortConvertDto> response = controller.currencyConvert(DataHelper.SOURCE_CURR,
-				DataHelper.TAR_CURR, DataHelper.CONVR_AMNT);
+		ResponseEntity<ResponseShortConvertDto> response = controller.currencyConvert(TestDataHelper.SOURCE_CURR,
+				TestDataHelper.TAR_CURR, TestDataHelper.CONVR_AMNT);
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
 		Assert.assertEquals((Double) 3.45, response.getBody().getResult());
 		Assert.assertEquals("19.21.2019", response.getBody().getCreatedAt());
@@ -45,8 +45,8 @@ public class CurrencyConverterControllerTest {
 
 	@Test
 	public void testCurrencyConvertDetails() {
-		ResponseEntity<ResponseConvertDto> response = controller.currencyConvertDetails(DataHelper.SOURCE_CURR,
-				DataHelper.TAR_CURR, DataHelper.CONVR_AMNT);
+		ResponseEntity<ResponseConvertDto> response = controller.currencyConvertDetails(TestDataHelper.SOURCE_CURR,
+				TestDataHelper.TAR_CURR, TestDataHelper.CONVR_AMNT);
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
 		Assert.assertEquals((Double) 300.42, response.getBody().getResult());
 		Assert.assertEquals("19.21.2019", response.getBody().getCreatedAt());

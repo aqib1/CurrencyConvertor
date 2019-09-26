@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.conichi.currency.converter.business.VATCacheBusiness;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
@@ -26,14 +26,14 @@ public class VatCacheBusinessTest {
 	}
 
 	private void mockVatCacheBusiness() {
-		Mockito.when(vatCacheBusiness.validateVat(Mockito.anyString())).thenReturn(DataHelper.getResponseShortVatDto());
+		Mockito.when(vatCacheBusiness.validateVat(Mockito.anyString())).thenReturn(TestDataHelper.getResponseShortVatDto());
 		Mockito.when(vatCacheBusiness.validateVatDetails(Mockito.anyString()))
-				.thenReturn(DataHelper.getResponseVatDto());
+				.thenReturn(TestDataHelper.getResponseVatDto());
 	}
 
 	@Test
 	public void testValidateVat() {
-		ResponseShortVatDetailDto response = vatCacheBusiness.validateVat(DataHelper.VAT_ID);
+		ResponseShortVatDetailDto response = vatCacheBusiness.validateVat(TestDataHelper.VAT_ID);
 		Assert.assertEquals("US", response.getCountryCode());
 		Assert.assertEquals(true, response.getValidFormat());
 	}
@@ -50,7 +50,7 @@ public class VatCacheBusinessTest {
 
 	@Test
 	public void testValidateVatdetails() {
-		ResponseVatDetailDto response = vatCacheBusiness.validateVatDetails(DataHelper.VAT_ID);
+		ResponseVatDetailDto response = vatCacheBusiness.validateVatDetails(TestDataHelper.VAT_ID);
 		Assert.assertEquals("US", response.getCountryCode());
 		Assert.assertEquals(true, response.getValidFormat());
 		Assert.assertEquals("12CVAERT", response.getQuery());

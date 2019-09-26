@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.conichi.currency.converter.controller.VATController;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.ResponseShortVatDetailDto;
 import com.example.model.ResponseVatDetailDto;
 
@@ -27,14 +27,14 @@ public class VATControllerTest {
 
 	private void mockVatController() {
 		Mockito.when(vatController.validateVat(Mockito.anyString()))
-				.thenReturn(DataHelper.getEntityResponseShortVatDto());
+				.thenReturn(TestDataHelper.getEntityResponseShortVatDto());
 		Mockito.when(vatController.validateVatDetailed(Mockito.anyString()))
-				.thenReturn(DataHelper.getEntityResponseVatDto());
+				.thenReturn(TestDataHelper.getEntityResponseVatDto());
 	}
 
 	@Test
 	public void testValidateVatDetailed() {
-		ResponseEntity<ResponseVatDetailDto> responseEntity = vatController.validateVatDetailed(DataHelper.VAT_ID);
+		ResponseEntity<ResponseVatDetailDto> responseEntity = vatController.validateVatDetailed(TestDataHelper.VAT_ID);
 		Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		Assert.assertEquals("US", responseEntity.getBody().getCountryCode());
 		Assert.assertEquals(true, responseEntity.getBody().getValidFormat());
@@ -47,7 +47,7 @@ public class VATControllerTest {
 	@Test
 	public void testValidateVat() {
 		ResponseEntity<ResponseShortVatDetailDto> responseShortVatDetailDto = vatController
-				.validateVat(DataHelper.VAT_ID);
+				.validateVat(TestDataHelper.VAT_ID);
 		Assert.assertEquals(HttpStatus.OK, responseShortVatDetailDto.getStatusCode());
 		Assert.assertEquals("US", responseShortVatDetailDto.getBody().getCountryCode());
 		Assert.assertEquals(true, responseShortVatDetailDto.getBody().getValidFormat());

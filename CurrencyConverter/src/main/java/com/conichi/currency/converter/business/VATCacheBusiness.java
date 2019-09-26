@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.entities.VATValidatorEntity;
 import com.conichi.currency.converter.exceptions.InvalidParamException;
 import com.conichi.currency.converter.mapper.VATValidatorEntityMapper;
@@ -25,14 +25,14 @@ public class VATCacheBusiness {
 	private VATValidatorEntityMapper mapper;
 
 	public ResponseVatDetailDto validateVatDetails(String vat) {
-		if (CCHelper.isNullOrEmptyString(vat))
+		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidParamException("vat id can not be null or empty");
 		logger.info("reading vat details from cache against vat id [" + vat + "]");
 		return mapper.vATValidatorEntityToResponseVatDetailDto(vatCacheService.read(vat));
 	}
 
 	public ResponseShortVatDetailDto validateVat(String vat) {
-		if (CCHelper.isNullOrEmptyString(vat))
+		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidParamException("vat id can not be null or empty");
 		logger.info("reading vat details from cache against vat id [" + vat + "]");
 		return mapper.vATValidatorEntityToResponseShortVatDetailDto(vatCacheService.read(vat));

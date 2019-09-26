@@ -17,7 +17,7 @@ import com.conichi.currency.converter.exceptions.CacheRefresherException;
 import com.conichi.currency.converter.exceptions.InvalidParamException;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.ResponseError;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,28 +29,28 @@ public class ControllerExceptionsAdviceTest {
 	@Before
 	public void init() {
 		Mockito.when(controllerExceptionsAdvice.handleBadInternalServerException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForBadInternalServerException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForBadInternalServerException());
 
 		Mockito.when(controllerExceptionsAdvice.handleInvalidParamException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForInvalidParamException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForInvalidParamException());
 
 		Mockito.when(controllerExceptionsAdvice.handleInvalidRequestException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForInvalidRequestException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForInvalidRequestException());
 
 		Mockito.when(controllerExceptionsAdvice.handleInvalidResponseException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForInvalidResponseException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForInvalidResponseException());
 
 		Mockito.when(controllerExceptionsAdvice.handleCachePresistException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForCachePresistException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForCachePresistException());
 
 		Mockito.when(controllerExceptionsAdvice.handleCacheRefresherException(Mockito.any(RuntimeException.class),
-				Mockito.any())).thenReturn(DataHelper.getErrorForCacheRefresherException());
+				Mockito.any())).thenReturn(TestDataHelper.getErrorForCacheRefresherException());
 	}
 
 	@Test
 	public void testBadInternalServerException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleBadInternalServerException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleBadInternalServerException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());
@@ -62,7 +62,7 @@ public class ControllerExceptionsAdviceTest {
 	@Test
 	public void testHandleInvalidParamException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleInvalidParamException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleInvalidParamException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());
@@ -74,7 +74,7 @@ public class ControllerExceptionsAdviceTest {
 	@Test
 	public void testHandleInvalidRequestException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleInvalidRequestException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleInvalidRequestException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());
@@ -86,7 +86,7 @@ public class ControllerExceptionsAdviceTest {
 	@Test
 	public void testHandleInvalidResponseException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleInvalidResponseException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleInvalidResponseException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());
@@ -98,7 +98,7 @@ public class ControllerExceptionsAdviceTest {
 	@Test
 	public void testHandleCachePresistException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleCachePresistException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleCachePresistException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());
@@ -110,7 +110,7 @@ public class ControllerExceptionsAdviceTest {
 	@Test
 	public void testHandleCacheRefresherException() {
 		ResponseEntity<ResponseError> response = controllerExceptionsAdvice
-				.handleCacheRefresherException(DataHelper.TEST_RUNTIME_EXC, DataHelper.TEST_WEB_REQUEST);
+				.handleCacheRefresherException(TestDataHelper.TEST_RUNTIME_EXC, TestDataHelper.TEST_WEB_REQUEST);
 		Assert.assertEquals("12.22.123", response.getBody().getCreatedAt());
 		Assert.assertEquals("error", response.getBody().getDetailedMessage());
 		Assert.assertEquals("error", response.getBody().getErrorMessage());

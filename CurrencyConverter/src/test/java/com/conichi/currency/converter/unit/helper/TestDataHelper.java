@@ -22,8 +22,9 @@ import com.example.model.ResponseVatDetailDto;
 import com.example.model.ResultValueDto;
 import com.example.model.ResultsDto;
 
-public class DataHelper {
+public class TestDataHelper {
 
+	public static final String CURRENCY_API_QUERY_FOR_TEST = "?source=PKR&target=USD&amount=100";
 	public static final WebRequest TEST_WEB_REQUEST = null;
 	public static final RuntimeException TEST_RUNTIME_EXC = new RuntimeException();
 	public static final String QUERY = "USD_PKR";
@@ -258,7 +259,7 @@ public class DataHelper {
 		return new ResponseEntity<>(errorResponse, HttpStatus.EXPECTATION_FAILED);
 	}
 
-	private DataHelper() {
+	private TestDataHelper() {
 
 	}
 }

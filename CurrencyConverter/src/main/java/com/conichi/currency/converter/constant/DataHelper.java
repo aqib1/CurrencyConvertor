@@ -16,8 +16,8 @@ import com.example.model.ResponseVatDetailDto;
  * @author AQIB JAVED
  *
  */
-public final class CCHelper {
-	private static final Logger logger = LoggerFactory.getLogger(CCHelper.class);
+public final class DataHelper {
+	private static final Logger logger = LoggerFactory.getLogger(DataHelper.class);
 	public static final String COMPONENT_SCAN_PATH = "com.conichi.currency.converter";
 	public static final String COMPONENT_SCAN_PATH_REPOSITORY = "com.conichi.currency.converter.repository";
 	public static final String UNDER_SCORE = "_";
@@ -45,16 +45,16 @@ public final class CCHelper {
 	}
 
 	public static void validateVatResponse(ResponseVatDetailDto response) {
-		if (CCHelper.isNull(response) || CCHelper.isNullOrEmptyString(response.getCompanyAddress())
-				|| CCHelper.isNullOrEmptyString(response.getCompanyName())
-				|| CCHelper.isNullOrEmptyString(response.getCountryCode())
-				|| CCHelper.isNullOrEmptyString(response.getQuery()) || CCHelper.isNull(response.getValidFormat())
-				|| CCHelper.isNull(response.getVatNumber()) || CCHelper.isNull(response.getValid())
-				|| CCHelper.isNull(response.getSuccess()))
+		if (DataHelper.isNull(response) || DataHelper.isNullOrEmptyString(response.getCompanyAddress())
+				|| DataHelper.isNullOrEmptyString(response.getCompanyName())
+				|| DataHelper.isNullOrEmptyString(response.getCountryCode())
+				|| DataHelper.isNullOrEmptyString(response.getQuery()) || DataHelper.isNull(response.getValidFormat())
+				|| DataHelper.isNull(response.getVatNumber()) || DataHelper.isNull(response.getValid())
+				|| DataHelper.isNull(response.getSuccess()))
 			throw new InvalidResponseException("\nNull Response recieved, against API => " + VAT_API);
 	}
 
-	private CCHelper() {
+	private DataHelper() {
 
 	}
 }

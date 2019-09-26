@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.conichi.currency.converter.entities.VATValidatorEntity;
 import com.conichi.currency.converter.exceptions.CachePresistException;
 import com.conichi.currency.converter.service.Impl.VATCacheServiceImpl;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VATCacheServiceImplTest {
@@ -25,9 +25,9 @@ public class VATCacheServiceImplTest {
 	}
 
 	private void mockVatCacheServiceImpl() {
-		Mockito.when(vatCacheServiceImpl.read(Mockito.anyString())).thenReturn(DataHelper.getValiatorEntity());
+		Mockito.when(vatCacheServiceImpl.read(Mockito.anyString())).thenReturn(TestDataHelper.getValiatorEntity());
 		Mockito.when(vatCacheServiceImpl.writeCache(Mockito.any(VATValidatorEntity.class)))
-				.thenReturn(DataHelper.getValiatorEntity());
+				.thenReturn(TestDataHelper.getValiatorEntity());
 		Mockito.when(vatCacheServiceImpl.count()).thenReturn(1L);
 		Mockito.doNothing().when(vatCacheServiceImpl).deleteAll();
 	}
@@ -72,7 +72,7 @@ public class VATCacheServiceImplTest {
 
 	@Test
 	public void testVatCacheServiceWrite() {
-		VATValidatorEntity entity = vatCacheServiceImpl.writeCache(DataHelper.getValiatorEntity());
+		VATValidatorEntity entity = vatCacheServiceImpl.writeCache(TestDataHelper.getValiatorEntity());
 		Assert.assertEquals("US", entity.getCountryCode());
 		Assert.assertEquals(true, entity.getValidFormat());
 		Assert.assertEquals("12CVAERT", entity.getQuery());
@@ -84,7 +84,7 @@ public class VATCacheServiceImplTest {
 
 	@Test
 	public void testVatCacheServiceRead() {
-		VATValidatorEntity entity = vatCacheServiceImpl.read(DataHelper.VAT_ID);
+		VATValidatorEntity entity = vatCacheServiceImpl.read(TestDataHelper.VAT_ID);
 		Assert.assertEquals("US", entity.getCountryCode());
 		Assert.assertEquals(true, entity.getValidFormat());
 		Assert.assertEquals("12CVAERT", entity.getQuery());

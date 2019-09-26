@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.conichi.currency.converter.mapper.ResponseShortVatDetailMapper;
 import com.conichi.currency.converter.service.VATService;
@@ -27,11 +27,11 @@ public class VATBusiness {
 	private VATCacheBusiness vatCacheBusiness;
 
 	public ResponseVatDetailDto validateVatDetails(String vat) {
-		if (CCHelper.isNullOrEmptyString(vat))
+		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidRequestException("vat id can not be null or empty");
 		logger.info("checking vat details from cache against vat id [" + vat + "]");
 		ResponseVatDetailDto responseVatDetailDto = vatCacheBusiness.validateVatDetails(vat);
-		if (!CCHelper.isNull(responseVatDetailDto))
+		if (!DataHelper.isNull(responseVatDetailDto))
 			return responseVatDetailDto;
 		logger.info("Vat details not found in cache!, sending request to service");
 		responseVatDetailDto = vatService.validateVat(vat);
@@ -41,11 +41,11 @@ public class VATBusiness {
 	}
 
 	public ResponseShortVatDetailDto validateVat(String vat) {
-		if (CCHelper.isNullOrEmptyString(vat))
+		if (DataHelper.isNullOrEmptyString(vat))
 			throw new InvalidRequestException("vat id can not be null or empty");
 		logger.info("sending request to vat service for vat id [" + vat + "]");
 		ResponseShortVatDetailDto responseShortVatDetailDto = vatCacheBusiness.validateVat(vat);
-		if (!CCHelper.isNull(responseShortVatDetailDto))
+		if (!DataHelper.isNull(responseShortVatDetailDto))
 			return responseShortVatDetailDto;
 		logger.info("Vat details not found in cache!, sending request to service");
 		ResponseVatDetailDto responseVatDetailDto = vatService.validateVat(vat);

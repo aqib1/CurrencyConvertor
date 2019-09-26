@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
 import com.conichi.currency.converter.service.Impl.VATServiceImpl;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.ResponseVatDetailDto;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,7 +25,7 @@ public class VATServiceImplTest {
 	}
 
 	private void mockVatServiceImpl() {
-		Mockito.when(vatServiceImpl.validateVat(Mockito.anyString())).thenReturn(DataHelper.getResponseVatDto());
+		Mockito.when(vatServiceImpl.validateVat(Mockito.anyString())).thenReturn(TestDataHelper.getResponseVatDto());
 	}
 
 	@Test(expected = InvalidResponseException.class)
@@ -41,7 +41,7 @@ public class VATServiceImplTest {
 
 	@Test
 	public void testValidateVat() {
-		ResponseVatDetailDto response = vatServiceImpl.validateVat(DataHelper.VAT_ID);
+		ResponseVatDetailDto response = vatServiceImpl.validateVat(TestDataHelper.VAT_ID);
 		Assert.assertEquals("US", response.getCountryCode());
 		Assert.assertEquals(true, response.getValidFormat());
 		Assert.assertEquals("12CVAERT", response.getQuery());

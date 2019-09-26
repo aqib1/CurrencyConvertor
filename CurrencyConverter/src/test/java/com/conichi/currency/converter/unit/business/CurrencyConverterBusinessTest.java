@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.conichi.currency.converter.business.CurrencyConverterBusiness;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
 import com.example.model.ResponseShortConvertDto;
@@ -38,14 +38,14 @@ public class CurrencyConverterBusinessTest {
 
 	private void mockCurrencyConverterBusiness() {
 		Mockito.when(currencyConverterBusiness.currencyConvert(Mockito.any(CCRequestDto.class)))
-				.thenReturn(DataHelper.getResponseShortConvertDto());
+				.thenReturn(TestDataHelper.getResponseShortConvertDto());
 		Mockito.when(currencyConverterBusiness.currencyConvertDetailed(Mockito.any(CCRequestDto.class)))
-				.thenReturn(DataHelper.getResponseConvertDto());
+				.thenReturn(TestDataHelper.getResponseConvertDto());
 	}
 
 	@Test
 	public void testCurrencyConvert() {
-		ResponseShortConvertDto response = currencyConverterBusiness.currencyConvert(DataHelper.getCCRequestDto());
+		ResponseShortConvertDto response = currencyConverterBusiness.currencyConvert(TestDataHelper.getCCRequestDto());
 		Assert.assertEquals((Double) 3.45, response.getResult());
 		Assert.assertEquals("19.21.2019", response.getCreatedAt());
 	}
@@ -53,7 +53,7 @@ public class CurrencyConverterBusinessTest {
 	@Test
 	public void testCuurencyConvertDetailed() {
 		ResponseConvertDto responseConvertDto = currencyConverterBusiness
-				.currencyConvertDetailed(DataHelper.getCCRequestDto());
+				.currencyConvertDetailed(TestDataHelper.getCCRequestDto());
 		Assert.assertEquals((Double) 300.42, responseConvertDto.getResult());
 		Assert.assertEquals("19.21.2019", responseConvertDto.getCreatedAt());
 		Assert.assertTrue(1 == responseConvertDto.getQuery().getCount());

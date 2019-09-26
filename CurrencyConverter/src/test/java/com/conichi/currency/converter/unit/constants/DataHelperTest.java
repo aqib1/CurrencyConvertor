@@ -5,114 +5,114 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.conichi.currency.converter.exceptions.InvalidResponseException;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DataHelperTest {
 
 	@Test
 	public void testIsNotNullOrEmptyString() {
-		boolean t = CCHelper.isNullOrEmptyString("Test");
+		boolean t = DataHelper.isNullOrEmptyString("Test");
 		Assert.assertFalse(t);
 	}
 
 	@Test
 	public void testIsNullString() {
-		boolean t = CCHelper.isNullOrEmptyString(null);
+		boolean t = DataHelper.isNullOrEmptyString(null);
 		Assert.assertTrue(t);
 	}
 
 	@Test
 	public void testIsEmptyString() {
-		boolean t = CCHelper.isNullOrEmptyString("");
+		boolean t = DataHelper.isNullOrEmptyString("");
 		Assert.assertTrue(t);
 	}
 
 	@Test
 	public void testIsNull() {
-		boolean t = CCHelper.isNull(null);
+		boolean t = DataHelper.isNull(null);
 		Assert.assertTrue(t);
 	}
 
 	@Test
 	public void testIsNotNull() {
-		boolean t = CCHelper.isNull(new Object());
+		boolean t = DataHelper.isNull(new Object());
 		Assert.assertFalse(t);
 	}
 
 	@Test
 	public void testCheckCoreRequirementsForCCRequestDto() {
-		CCHelper.checkCoreRequirementsForCCRequestDto(DataHelper.getCCRequestDto());
+		DataHelper.checkCoreRequirementsForCCRequestDto(TestDataHelper.getCCRequestDto());
 		Assert.assertTrue(true);
 	}
 
 	@Test(expected = InvalidRequestException.class)
 	public void testCheckCoreRequirementsForCCRequestDtoWithOutSource() {
-		CCHelper.checkCoreRequirementsForCCRequestDto(DataHelper.getCCRequestDtoWithoutSource());
+		DataHelper.checkCoreRequirementsForCCRequestDto(TestDataHelper.getCCRequestDtoWithoutSource());
 	}
 
 	@Test(expected = InvalidRequestException.class)
 	public void testCheckCoreRequirementsForCCRequestDtoWithOutTarget() {
-		CCHelper.checkCoreRequirementsForCCRequestDto(DataHelper.getCCRequestDtoWithoutTarget());
+		DataHelper.checkCoreRequirementsForCCRequestDto(TestDataHelper.getCCRequestDtoWithoutTarget());
 	}
 
 	@Test(expected = InvalidRequestException.class)
 	public void testCheckCoreRequirementsForCCRequestDtoNull() {
-		CCHelper.checkCoreRequirementsForCCRequestDto(null);
+		DataHelper.checkCoreRequirementsForCCRequestDto(null);
 	}
 
 	@Test
 	public void testValidateVatResponse() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDto());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDto());
 		Assert.assertTrue(true);
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testValidateVatResponseNull() {
-		CCHelper.validateVatResponse(null);
+		DataHelper.validateVatResponse(null);
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutVatNumber() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutVatNumber());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutVatNumber());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutValidFormat() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutValidFormat());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutValidFormat());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutValid() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutValid());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutValid());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutSucess() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutSucess());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutSucess());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutQuery() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutQuery());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutQuery());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutCCode() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutCCode());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutCCode());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutCName() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutCName());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutCName());
 	}
 
 	@Test(expected = InvalidResponseException.class)
 	public void testResponseVatDtoWithoutCAdr() {
-		CCHelper.validateVatResponse(DataHelper.getResponseVatDtoWithoutCAdr());
+		DataHelper.validateVatResponse(TestDataHelper.getResponseVatDtoWithoutCAdr());
 	}
 
 }

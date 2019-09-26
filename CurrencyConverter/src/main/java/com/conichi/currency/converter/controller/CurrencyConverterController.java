@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.conichi.currency.converter.business.CurrencyConverterBusiness;
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.exceptions.InvalidRequestException;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
@@ -38,6 +38,7 @@ public class CurrencyConverterController {
 	 * @param targetCurrency
 	 * @param amount
 	 * @return
+	 * <p>/api/currency/convert</p>
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<ResponseShortConvertDto> currencyConvert(@RequestParam("source") String sourceCurrency,
@@ -70,8 +71,8 @@ public class CurrencyConverterController {
 	 * @return
 	 */
 	private CCRequestDto getCCRequestDto(String sourceCurrency, String targetCurrency, Integer amount) {
-		if (CCHelper.isNullOrEmptyString(sourceCurrency) || CCHelper.isNullOrEmptyString(targetCurrency)
-				|| CCHelper.isNull(amount)) {
+		if (DataHelper.isNullOrEmptyString(sourceCurrency) || DataHelper.isNullOrEmptyString(targetCurrency)
+				|| DataHelper.isNull(amount)) {
 			throw new InvalidRequestException("Invalid request, parameters are not available.");
 		}
 		CCRequestDto requestDto = new CCRequestDto();

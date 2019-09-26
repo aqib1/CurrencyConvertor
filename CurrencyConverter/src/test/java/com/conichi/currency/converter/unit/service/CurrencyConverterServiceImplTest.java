@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.conichi.currency.converter.exceptions.BadInternalServerException;
 import com.conichi.currency.converter.service.Impl.CurrencyConverterServiceImpl;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 import com.example.model.CCRequestDto;
 import com.example.model.ResponseConvertDto;
 
@@ -26,8 +26,8 @@ public class CurrencyConverterServiceImplTest {
 	}
 
 	private void mockCurrencyConverterService() {
-		Mockito.when(currencyConverterService.currencyConvert(DataHelper.getCCRequestDto()))
-				.thenReturn(DataHelper.getResponseConvertDto());
+		Mockito.when(currencyConverterService.currencyConvert(TestDataHelper.getCCRequestDto()))
+				.thenReturn(TestDataHelper.getResponseConvertDto());
 	}
 
 	private void mockNullRequestCurrencyConverterService() {
@@ -43,7 +43,7 @@ public class CurrencyConverterServiceImplTest {
 
 	@Test
 	public void currencyConvert() {
-		ResponseConvertDto responseConvertDto = currencyConverterService.currencyConvert(DataHelper.getCCRequestDto());
+		ResponseConvertDto responseConvertDto = currencyConverterService.currencyConvert(TestDataHelper.getCCRequestDto());
 		Assert.assertEquals((Double) 300.42, responseConvertDto.getResult());
 		Assert.assertEquals("19.21.2019", responseConvertDto.getCreatedAt());
 		Assert.assertTrue(1 == responseConvertDto.getQuery().getCount());

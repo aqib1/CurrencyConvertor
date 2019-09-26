@@ -4,7 +4,7 @@ import static com.conichi.currency.converter.constant.URLS.VAT_API;
 
 import org.springframework.stereotype.Service;
 
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.factory.FeignBuilderFactory;
 import com.conichi.currency.converter.feignclient.VATValidatorAPI;
 import com.conichi.currency.converter.service.VATService;
@@ -21,7 +21,7 @@ public class VATServiceImpl implements VATService {
 		VATValidatorAPI vatAPI = FeignBuilderFactory.getFeignBuilder().logger(new Slf4jLogger(VATValidatorAPI.class))
 				.logLevel(Logger.Level.FULL).target(VATValidatorAPI.class, VAT_API);
 		ResponseVatDetailDto response = vatAPI.validateVatId(vat);
-		CCHelper.validateVatResponse(response);
+		DataHelper.validateVatResponse(response);
 		return response;
 	}
 

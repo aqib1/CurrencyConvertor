@@ -12,7 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.conichi.currency.converter.entities.CurrencyConverterEntity;
 import com.conichi.currency.converter.exceptions.CachePresistException;
 import com.conichi.currency.converter.service.Impl.CCCacheServiceImpl;
-import com.conichi.currency.converter.unit.helper.DataHelper;
+import com.conichi.currency.converter.unit.helper.TestDataHelper;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CCCacheServiceImplTest {
@@ -25,9 +25,9 @@ public class CCCacheServiceImplTest {
 
 	@Before
 	public void init() {
-		Mockito.when(ccCacheServiceImpl.read(Mockito.anyString())).thenReturn(DataHelper.getCurrencyConverterEntity());
+		Mockito.when(ccCacheServiceImpl.read(Mockito.anyString())).thenReturn(TestDataHelper.getCurrencyConverterEntity());
 		Mockito.when(ccCacheServiceImpl.writeCache(Mockito.any(CurrencyConverterEntity.class)))
-				.thenReturn(DataHelper.getCurrencyConverterEntity());
+				.thenReturn(TestDataHelper.getCurrencyConverterEntity());
 		Mockito.doNothing().when(ccCacheServiceImpl).deleteAll();
 	}
 
@@ -71,7 +71,7 @@ public class CCCacheServiceImplTest {
 
 	@Test
 	public void readCache() {
-		CurrencyConverterEntity entity = ccCacheServiceImpl.read(DataHelper.QUERY);
+		CurrencyConverterEntity entity = ccCacheServiceImpl.read(TestDataHelper.QUERY);
 		Assert.assertEquals((Long) 1l, entity.getId());
 		Assert.assertTrue(1.0 == entity.getConvertionValue());
 		Assert.assertEquals(1, entity.getCountResult().intValue());
@@ -83,7 +83,7 @@ public class CCCacheServiceImplTest {
 	@Test
 	public void writeCache() {
 		Mockito.when(ccCacheServiceImpl.count()).thenReturn(1l);
-		CurrencyConverterEntity entity = ccCacheServiceImpl.writeCache(DataHelper.getCurrencyConverterEntity());
+		CurrencyConverterEntity entity = ccCacheServiceImpl.writeCache(TestDataHelper.getCurrencyConverterEntity());
 		Assert.assertEquals(1L, ccCacheServiceImpl.count());
 		Assert.assertEquals((Long) 1l, entity.getId());
 		Assert.assertTrue(1.0 == entity.getConvertionValue());

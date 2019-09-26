@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conichi.currency.converter.constant.CCHelper;
+import com.conichi.currency.converter.constant.DataHelper;
 import com.conichi.currency.converter.entities.CurrencyConverterEntity;
 import com.conichi.currency.converter.mapper.CurrencyConverterEntityMapper;
 import com.conichi.currency.converter.mapper.ResponseConvertDtoMapper;
@@ -32,15 +32,15 @@ public class CCCacheBusiness {
 	private ResponseConvertDtoMapper responseConvertDtoMapper;
 
 	public ResponseShortConvertDto convertCurrency(CCRequestDto requestDto) {
-		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
-		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
+		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);
+		String query = requestDto.getSourceCurrency() + DataHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseShortMapper.currencyConverterEntityToResponseShortDto(cacheService.read(query));
 	}
 
 	public ResponseConvertDto convertCurrencyDetailed(CCRequestDto requestDto) {
-		CCHelper.checkCoreRequirementsForCCRequestDto(requestDto);
-		String query = requestDto.getSourceCurrency() + CCHelper.UNDER_SCORE + requestDto.getTargetCurrency();
+		DataHelper.checkCoreRequirementsForCCRequestDto(requestDto);
+		String query = requestDto.getSourceCurrency() + DataHelper.UNDER_SCORE + requestDto.getTargetCurrency();
 		logger.info("Query created for lookup => " + query);
 		return responseConvertDtoMapper.responseConvertDtoFromCurrencyConverterEntity(cacheService.read(query));
 	}
