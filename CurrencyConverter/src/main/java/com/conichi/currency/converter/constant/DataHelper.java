@@ -29,6 +29,7 @@ public final class DataHelper {
 	 * @return
 	 */
 	public static boolean isNullOrEmptyString(String string) {
+		logger.info("isNull & isEmpty check against string[" + string + "]");
 		return Objects.isNull(string) || string.isEmpty();
 	}
 
@@ -37,6 +38,7 @@ public final class DataHelper {
 	 * @return
 	 */
 	public static boolean isNull(Object object) {
+		logger.info("isNull check against object [" + object + "]");
 		return Objects.isNull(object);
 	}
 
@@ -60,6 +62,7 @@ public final class DataHelper {
 	 * @param response
 	 */
 	public static void validateVatResponse(ResponseVatDetailDto response) {
+		logger.info("Checking core requirements of respons[" + response + "]");
 		if (DataHelper.isNull(response) || DataHelper.isNullOrEmptyString(response.getCompanyAddress())
 				|| DataHelper.isNullOrEmptyString(response.getCompanyName())
 				|| DataHelper.isNullOrEmptyString(response.getCountryCode())
