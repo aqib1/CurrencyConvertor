@@ -41,7 +41,13 @@ CurrencyConverterController is a rest controller which further consists of two t
 
 4- For currency conversion and vat validation two different free API used, Those API are connected using Netflix-Feign declarative HTTP client which is also the part of Spring cloud technology.
 
-5- For cache H2-Database used as in memory database. To avoid any dirty reads/write, phantom reads, repeated reads, Java 7 ReadWriteReenterentLock is used.
+5- For cache H2-Database used as in memory database. To avoid any dirty reads/write, phantom reads, repeated reads, Java ReadWriteReenterentLock is used.
+
+6- Controller advice is written to handle exception and send respective response.
+
+7- Spring AOP is used to logging each method enterence and exit.
+
+8- Spring scheduler is writter to schedule cache refresher with a specific time interval.
  
 # Currency Converter
 Currency Converter API consists on two API's 
@@ -53,7 +59,9 @@ First API will going to return convertion detailes as it was asked in task, seco
 VATController also provides two API's 
 - /api/vat/validate?vat=VAT_ID
 - /api/vat/validate/details?vat=VAT_ID
-
+# Testing
+For each class, methods unit tests are provided. As application is build using red-green-refactor sort of test driven approach, so thats a reason it have alot of test cases.
+Integration test for Rest API is provided sepreatly.
 # All currencies supported
 Please click the url to see all currencies list
 https://free.currconv.com/api/v7/countries?apiKey=4754c8fa8c0d8e08c658
