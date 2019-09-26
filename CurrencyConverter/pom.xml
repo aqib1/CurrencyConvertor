@@ -170,7 +170,7 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<configuration>
-					<imageName>ccvatapi</imageName>
+					<imageName>aqibbutt3078/ccvatapirep</imageName>
 					<baseImage>java:8</baseImage>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 					<!-- copy the service's jar file from target into the root directory 
@@ -182,7 +182,17 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
+				<repository>aqibbutt3078/ccvatapi</repository>
+                 <tag>${project.version}</tag>
 				</configuration>
+				<executions>
+                 <execution>
+                     <id>default</id>
+                     <goals>
+                         <goal>build</goal>
+                     </goals>
+                 </execution>
+             </executions>
 			</plugin>
 		</plugins>
 	</build>
