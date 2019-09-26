@@ -41,14 +41,18 @@ CurrencyConverterController is a rest controller which further consists of two t
 
 4- For currency conversion and vat validation two different free API used, Those API are connected using Netflix-Feign declarative HTTP client which is also the part of Spring cloud technology.
 
+5- For cache H2-Database used as in memory database. To avoid any dirty reads/write, phantom reads, repeated reads, Java 7 ReadWriteReenterentLock is used.
  
 # Currency Converter
 Currency Converter API consists on two API's 
 - /api/currency/convert?source=SOURCE_COUNTRY_CODE&target=TARGET_COUNTRY_CODE&amount=AMOUNT_NUMBER
 - /api/currency/convert/details?source=SOURCE_COUNTRY_CODE&target=TARGET_COUNTRY_CODE&amount=AMOUNT_NUMBER
 
-First API will going to return convertion detailes as it was asked in task, second API return details with some additional information
-
+First API will going to return convertion detailes as it was asked in task, second API return details with some additional inVAT_ID
+# VATController
+VATController also provides two API's 
+- /api/vat/validate?vat=VAT_ID
+- /api/vat/validate/details?vat=VAT_ID
 
 # All currencies supported
 Please click the url to see all currencies list
