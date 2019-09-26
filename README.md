@@ -48,6 +48,8 @@ CurrencyConverterController is a rest controller which further consists of two t
 7- Spring AOP is used to logging each method enterence and exit.
 
 8- Spring scheduler is writter to schedule cache refresher with a specific time interval.
+
+9- Spring boot dockerization is added using spotify maven plugin for docker, by running command mvn package docker:build
  
 # Currency Converter
 Currency Converter API consists on two API's 
